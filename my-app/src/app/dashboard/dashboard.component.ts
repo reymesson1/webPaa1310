@@ -5,6 +5,7 @@ import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
 import { LoginComponent } from '../login/login.component';
 import { UserComponent } from '../user/user.component';
 import { LoadingComponent } from '../loading/loading.component';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
