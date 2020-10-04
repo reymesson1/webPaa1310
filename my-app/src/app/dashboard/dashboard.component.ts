@@ -48,73 +48,73 @@ export class DashboardComponent implements OnInit {
     }    
 
     if(this.restapi.isAuthenticated){
-      this.openDialog()
+      // this.openDialog()
     }    
 
     
   }
   
-  ngAfterViewChecked(){
+  // ngAfterViewChecked(){
     
-    if(this.restapi.isStarted){
+  //   if(this.restapi.isStarted){
       
-      this.startTimer();
-      this.timeLeft = 60;
-      this.restapi.isStarted = false;
-    }
+  //     this.startTimer();
+  //     this.timeLeft = 60;
+  //     this.restapi.isStarted = false;
+  //   }
 
-    if(this.restapi.muestrameTablero){
+  //   if(this.restapi.muestrameTablero){
 
 
 
-      this.restapi.updateColumns(this.restapi.actualId-1,this.columns)
-      .subscribe(
-          (data : any) => {
-            // this.historial = data   
-            data.map((dat:any)=>{
-              console.log(dat);
-          // this.restapi.columns = dat.columns
-        })
+  //     this.restapi.updateColumns(this.restapi.actualId-1,this.columns)
+  //     .subscribe(
+  //         (data : any) => {
+  //           // this.historial = data   
+  //           data.map((dat:any)=>{
+  //             console.log(dat);
+  //         // this.restapi.columns = dat.columns
+  //       })
   
-      })    
+  //     })    
   
 
-      this.restapi.muestrameTablero = false;
-      
-
-
-    }
-
-    if(this.restapi.historyActive){
-
-
-      this.restapi.setColumnCustom(this.restapi.actualId)
-      .subscribe(
-          (data : any) => {
-            // this.historial = data   
-            data.map((dat:any)=>{
-              // console.log(dat.columns);
-           this.columns = dat.columns
-        })
-  
-      })      
-
-
-      this.dialogRef.close('Pizza!');
-
-
-
+  //     this.restapi.muestrameTablero = false;
       
 
-      this.restapi.historyActive = false;
+
+  //   }
+
+  //   if(this.restapi.historyActive){
+
+
+  //     this.restapi.setColumnCustom(this.restapi.actualId)
+  //     .subscribe(
+  //         (data : any) => {
+  //           // this.historial = data   
+  //           data.map((dat:any)=>{
+  //             // console.log(dat.columns);
+  //          this.columns = dat.columns
+  //       })
+  
+  //     })      
+
+
+  //     this.dialogRef.close('Pizza!');
 
 
 
-    }
+      
 
-    this.cdr.detectChanges();
+  //     this.restapi.historyActive = false;
 
-  }
+
+
+  //   }
+
+  //   this.cdr.detectChanges();
+
+  // }
 
   startTimer() {
     this.play = true;

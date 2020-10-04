@@ -18,12 +18,49 @@
                 <button mat-raised-button (click)="openDialog()">Pick one</button>
         </div> -->
         <div class="row">
+                <mat-card>
+                        <form style="padding-left:5%;" #f="ngForm" (ngSubmit)="login(f)" novalidate>
+                                <div class="row"> 
+                                        <mat-form-field>
+                                                <mat-label>Search</mat-label>
+                                                <input matInput name="username" ngModel #first="ngModel" />
+                                        </mat-form-field>
+                                </div>
+                        </form>
+                                
+                </mat-card>
+        </div>
+        <br/>
+        <div class="row">
                 
-                <div class="col-md-1" *ngFor="let user of columns; let i = index">
+                <div class="col-md-3" style="margin-bottom:10px;" *ngFor="let user of columns; let i = index">
 
-                        <div class="row" *ngFor="let row of user.rows; let i = index" >
-                                <span (click)="onClick(user.id,row.id)" style="font-size:100px;" matTooltip="{{ user.id + ' - ' + row.id }}" ><i [ngStyle]="{'color':row.color}" class="fa fa-circle" ></i></span>
-                        </div>
+                        <!-- <div class="row" *ngFor="let row of user.rows; let i = index" > -->
+                                <!-- <span (click)="onClick(user.id,row.id)" style="font-size:100px;" matTooltip="{{ user.id + ' - ' + row.id }}" ><i [ngStyle]="{'color':row.color}" class="fa fa-image" ></i></span> -->
+                                <!-- <mat-card>
+                                        <span style="font-size:100px;" ><i class="fa fa-image" ></i></span>
+                                        <mat-card-header>
+                                                        <div mat-card-avatar class="example-header-image"></div>
+                                                        <mat-card-title>Shiba Inu</mat-card-title>
+                                                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                                        </mat-card-header>
+                                        <img mat-card-image style="background-size:cover" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu">
+                                </mat-card> -->
+                        <!-- </div> -->
+
+                        <mat-card class="example-card">
+                                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                                <mat-card-header>
+                                                <div mat-card-avatar class="example-header-image"></div>
+                                                <mat-card-title>Shiba Inu</mat-card-title>
+                                                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                                </mat-card-header>        
+                                <mat-card-actions>
+                                        <button mat-button>LIKE</button>
+                                        <button mat-button>SHARE</button>
+                                </mat-card-actions>
+                        </mat-card>
+                                      
                         
                 </div>
         </div>
