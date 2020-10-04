@@ -1,0 +1,13 @@
+<div class="container-fluid">
+
+    <br/> 
+    <br/>
+    <div class="row" *ngFor="let user of recap; let i = index"> 
+
+        <h1 *ngIf="user._id=='win'" style="padding-left:40%;" >Win: <span>{{user.total}}</span> </h1>
+        <h1 *ngIf="user._id=='loss'" style="padding-left:40%;" >Loss: <span>{{user.total}}</span> </h1>
+        <h1 *ngIf="user._id=='draw'" style="padding-left:40%;" >Draw: <span>{{user.total}}</span> </h1>
+  
+    </div>
+
+</div>

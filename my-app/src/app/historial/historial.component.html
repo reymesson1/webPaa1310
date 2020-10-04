@@ -1,0 +1,23 @@
+<div class="container-fluid" style="overflow: scroll;height: 90%;">
+        <br/> 
+        <br/>
+        <div class="row" > 
+
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Player</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let history of historial; let i = index" >
+                    <tr> 
+                        <td (click)="loadHistory(history.id,history.isActive)" style="text-decoration:underline" >{{history.date}}</td>
+                        <td>{{username}}</td> 
+                        <td>{{history.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>

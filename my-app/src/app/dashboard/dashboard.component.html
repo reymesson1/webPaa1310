@@ -1,0 +1,31 @@
+
+<div class="container">
+
+<br/>
+<br/>
+        <!-- <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                        <p>{{time}} Seconds Left....</p>
+                </div>
+                <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+                <button (click)='startTimer()'>Start Timer</button>
+
+        </div> -->
+        <!-- <div class="row">
+                <button mat-raised-button (click)="openDialog()">Pick one</button>
+        </div> -->
+        <div class="row">
+                
+                <div class="col-md-1" *ngFor="let user of columns; let i = index">
+
+                        <div class="row" *ngFor="let row of user.rows; let i = index" >
+                                <span (click)="onClick(user.id,row.id)" style="font-size:100px;" matTooltip="{{ user.id + ' - ' + row.id }}" ><i [ngStyle]="{'color':row.color}" class="fa fa-circle" ></i></span>
+                        </div>
+                        
+                </div>
+        </div>
+                
+</div>

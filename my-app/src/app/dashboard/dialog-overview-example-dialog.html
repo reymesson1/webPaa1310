@@ -1,0 +1,19 @@
+<div class="row">
+    <h1 mat-dialog-title> &nbsp;&nbsp;&nbsp;   {{message}}</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+            <button mat-button color="default" (click)="viewScore()" >View Score</button>
+        </div>
+    <div class="col-md-4">
+            <button mat-button color="primary" (click)="reset()" >Play again</button>
+    </div>
+    <div class="col-md-4">
+            <button  [disabled]="!isStarted" mat-button color="primary" (click)="saveState()" >Save State</button>
+    </div>
+</div>
+<div class="row" *ngIf="isScore" >
+
+    <app-view-score></app-view-score>
+
+</div>
