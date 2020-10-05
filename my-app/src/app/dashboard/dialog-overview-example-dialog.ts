@@ -88,6 +88,11 @@ export class DialogOverviewExampleDialog {
         
         this.dialogRef.close();
 
+        setTimeout(() => {
+            
+            window.location.reload();
+        }, 2000);
+
     }
 
 }

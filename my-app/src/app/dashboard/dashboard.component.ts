@@ -6,6 +6,8 @@ import { LoginComponent } from '../login/login.component';
 import { UserComponent } from '../user/user.component';
 import { LoadingComponent } from '../loading/loading.component';
 import {NgForm} from '@angular/forms';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -140,16 +142,41 @@ export class DashboardComponent implements OnInit {
 
   sortByAsc(){
 
-    var arrList = [];
+    var sorted = this.columns.sort((a,b)=>{
+      var da = new Date(a.date).getTime();
+      var db = new Date(b.date).getTime();
+      
+      return da < db ? -1 : da > db ? 1 : 0
+    });
 
-    for(var x=parseInt(this.columns.length)-1;x>=0;x--){
+
+    console.log(sorted)
+
+    this.columns = sorted;
 
 
-      console.log(this.columns[x].date);
-      arrList.push(this.columns[x]);
-    }
+    // var arrList = [];
 
-    this.columns = arrList
+    // var temp = 0;
+
+
+    // for(var x=parseInt(this.columns.length)-1;x>=0;x--){
+
+
+    //   var now = moment(new Date()); //todays date
+    //   var end = moment(this.columns[x].date); // another date
+    //   var duration = moment.duration(now.diff(end));
+    //   var days = duration.asDays();
+    //   console.log(days)
+
+    //   if(temp<days){
+
+    //     temp=days;
+    //   }
+
+    // }
+
+    // this.columns = arrList
 
 
   }
@@ -161,10 +188,10 @@ export class DashboardComponent implements OnInit {
     for(var x=0;x<parseInt(this.columns.length);x++){
 
       // console.log(this.columns[x]);
-        arrList.push(this.columns[x]);
+        // arrList.push(this.columns[x]);
     }
 
-    this.columns = arrList
+    // this.columns = arrList
 
   }
 

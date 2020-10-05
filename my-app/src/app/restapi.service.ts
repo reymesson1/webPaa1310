@@ -219,7 +219,7 @@ export class RestapiService {
     this.http.post(this.path+"column",
     {
       "id": dataId,
-      "date": moment().format("YYYY MM DD"),
+      "date": moment().format("YYYY-MM-DD"),
       "columns": columns,
       "status": this.status,
       "isActive": true,
