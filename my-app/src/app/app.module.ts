@@ -20,6 +20,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
@@ -60,7 +62,9 @@ import { LoadingComponent } from './loading/loading.component';
     FormsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
