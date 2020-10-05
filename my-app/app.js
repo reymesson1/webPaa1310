@@ -38,7 +38,7 @@ app.post('/login', userController.setLogin);
 
 app.post('/resetpassword', userController.setResetPassword);
 
-mongoose.connect('mongodb://localhost:27017/connect4',(err)=>{
+mongoose.connect('mongodb://localhost:27017/youtube',(err)=>{
     if(!err){
         console.log('Connected to mongo Database');
     }
