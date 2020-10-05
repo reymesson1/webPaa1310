@@ -31,6 +31,7 @@ import { ViewScoreComponent } from './view-score/view-score.component';
 import { RecapComponent } from './recap/recap.component';
 import { HistorialComponent } from './historial/historial.component';
 import { LoadingComponent } from './loading/loading.component';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { LoadingComponent } from './loading/loading.component';
     ViewScoreComponent,
     RecapComponent,
     HistorialComponent,
-    LoadingComponent
+    LoadingComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
