@@ -155,43 +155,9 @@ export class DashboardComponent implements OnInit {
     this.columns = sorted;
 
 
-    // var arrList = [];
-
-    // var temp = 0;
-
-
-    // for(var x=parseInt(this.columns.length)-1;x>=0;x--){
-
-
-    //   var now = moment(new Date()); //todays date
-    //   var end = moment(this.columns[x].date); // another date
-    //   var duration = moment.duration(now.diff(end));
-    //   var days = duration.asDays();
-    //   console.log(days)
-
-    //   if(temp<days){
-
-    //     temp=days;
-    //   }
-
-    // }
-
-    // this.columns = arrList
-
-
   }
 
   sortByDes(){
-
-    var arrList = [];
-
-    for(var x=0;x<parseInt(this.columns.length);x++){
-
-      // console.log(this.columns[x]);
-        // arrList.push(this.columns[x]);
-    }
-
-    // this.columns = arrList
 
   }
 
