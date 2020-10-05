@@ -36,13 +36,13 @@ export class DashboardComponent implements OnInit {
 
     this.users = this.restapi.tasks; 
 
-    this.columns = this.restapi.columns;
+    // this.columns = this.restapi.columns;
 
-    // this.restapi.getMaster()
-    // .subscribe(data => data.map(dat=>{
-    //   console.log(dat.columns)
-    //   this.columns = dat.columns
-    // }));
+    this.restapi.getMaster()
+    .subscribe(data => data.map(dat=>{
+      console.log(dat)
+      this.columns.push(dat)
+    }));
 
     if(!this.restapi.isAuthenticated){
       this.openDialogLogin()
@@ -137,6 +137,36 @@ export class DashboardComponent implements OnInit {
     // }, 2000);
   }
 
+
+  sortByAsc(){
+
+    var arrList = [];
+
+    for(var x=parseInt(this.columns.length)-1;x>=0;x--){
+
+
+      console.log(this.columns[x].date);
+      arrList.push(this.columns[x]);
+    }
+
+    this.columns = arrList
+
+
+  }
+
+  sortByDes(){
+
+    var arrList = [];
+
+    for(var x=0;x<parseInt(this.columns.length);x++){
+
+      // console.log(this.columns[x]);
+        arrList.push(this.columns[x]);
+    }
+
+    this.columns = arrList
+
+  }
 
   checkAdjacent(columnId, rowId){
 
@@ -331,11 +361,11 @@ export class DashboardComponent implements OnInit {
   openDialog(): void {
 
     this.dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '450px',
+      width: '800px',
       data: {name: this.name, animal: this.animal}
     });
 
-    this.dialogRef.disableClose = true;
+    // this.dialogRef.disableClose = true;
 
     this.dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

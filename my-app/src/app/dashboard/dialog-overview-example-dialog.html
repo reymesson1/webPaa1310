@@ -1,7 +1,45 @@
 <div class="row">
-    <h1 mat-dialog-title> &nbsp;&nbsp;&nbsp;   {{message}}</h1>
+    <h1 mat-dialog-title> &nbsp;&nbsp;&nbsp;   {{'Upload New Video'}}</h1>
+</div>
+
+<div class="row">
+        <div class="col-md-4">
+            </div>
+        <div class="col-md-4">
+                <button mat-button color="primary" (click)="reset()" >Upload video</button>
+        </div>
+        <div class="col-md-4">
+        </div>
+    
+
 </div>
 <div class="row">
+
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Favorite food</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="Sushi">
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field>
+        </form>
+    
+
+</div>
+<div class="row">
+        <div class="col-md-5">
+            </div>
+        <div class="col-md-5">
+            <button mat-button color="primary" (click)="reset()" >Save</button>
+        </div>
+        <div class="col-md-2">
+        </div>
+
+</div>
+<!-- <div class="row">
     <div class="col-md-4">
             <button mat-button color="default" (click)="viewScore()" >View Score</button>
         </div>
@@ -16,4 +54,4 @@
 
     <app-view-score></app-view-score>
 
-</div>
+</div> -->
