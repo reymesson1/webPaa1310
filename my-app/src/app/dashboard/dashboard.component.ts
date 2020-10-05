@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
     // this.columns = this.restapi.columns;
 
     this.restapi.getMaster()
-    .subscribe(data => data.map(dat=>{
+    .subscribe((data:any) => data.map((dat:any)=>{
       console.log(dat)
       this.columns.push(dat)
     }));
@@ -142,9 +142,9 @@ export class DashboardComponent implements OnInit {
 
   sortByAsc(){
 
-    var sorted = this.columns.sort((a,b)=>{
-      var da = new Date(a.date).getTime();
-      var db = new Date(b.date).getTime();
+    let sorted :any = this.columns.sort((a,b:any)=>{
+      var da = new Date((<any>a).date).getTime();
+      var db = new Date((<any>b).date).getTime();
       
       return da < db ? -1 : da > db ? 1 : 0
     });

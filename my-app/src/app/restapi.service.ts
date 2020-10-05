@@ -19,8 +19,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  path = "http://localhost:8082/";
-  // path = "http://167.172.143.106:8082/";
+  // path = "http://localhost:8082/";
+  path = "http://167.172.143.106:8082/";
   
   authPath = this.path + '/login';
 
