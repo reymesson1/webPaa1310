@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
     console.log(event.pageSize)
     this.restapi.setColumnSortTop(event.pageSize)
     .subscribe(
-        (val) => {
+        (val:any) => {
             console.log("POST call successful value returned in body",val);
             this.columns = val
             // this.columns = val[0];
@@ -179,7 +179,7 @@ export class DashboardComponent implements OnInit {
 
     this.restapi.getColumnSortAsc()
     .subscribe(
-    (val) => {
+    (val:any) => {
         console.log("POST call successful value returned in body",val);
         this.columns = val;
         // this.columns = val[0];
@@ -216,7 +216,7 @@ export class DashboardComponent implements OnInit {
 
     this.restapi.getColumnSortDes()
     .subscribe(
-    (val) => {
+    (val:any) => {
         console.log("POST call successful value returned in body",val);
         this.columns = val
         // this.columns = val[0];
