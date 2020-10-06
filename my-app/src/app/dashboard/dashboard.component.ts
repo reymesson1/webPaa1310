@@ -8,8 +8,8 @@ import { LoadingComponent } from '../loading/loading.component';
 import {NgForm} from '@angular/forms';
 import * as moment from 'moment';
 
-
-@Component({
+ 
+@Component({ 
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   play : boolean = false;
   dialogRef
   dialogRefLoading
-
+  filterStatus = '';
 
 
   ngOnInit(): void { 
