@@ -219,7 +219,7 @@ export class RestapiService {
     this.http.post(this.path+"column",
     {
       "id": dataId,
-      "date": moment().format("YYYY-MM-DD"),
+      "date": moment().format("YYYY-MM-DD hh:mm"),
       "columns": columns,
       "status": this.status,
       "isActive": true,
@@ -336,6 +336,22 @@ export class RestapiService {
       "date": moment().format("YYYY MM DD"),
       "columns": columns
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  getColumnSortAsc(){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.get(this.path+"columnsortasc",
+     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  getColumnSortDes(){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.get(this.path+"columnsortdes",
+     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
 

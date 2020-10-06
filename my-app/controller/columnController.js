@@ -98,3 +98,17 @@ exports.updateColumns = async(req,res)=>{
     res.send([{'message':'end update'}]);
 
 }
+
+exports.getColumnSortedAsc = async(req,res)=>{
+
+    var column = await Column.find({}).sort({"date":1})
+    
+    res.send(column);
+}
+
+exports.getColumnSortedDes = async(req,res)=>{
+
+    var column = await Column.find({}).sort({"date":-1})
+    
+    res.send(column);
+}

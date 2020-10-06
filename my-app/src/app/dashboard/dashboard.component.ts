@@ -144,22 +144,60 @@ export class DashboardComponent implements OnInit {
 
   sortByAsc(){
 
-    let sorted :any = this.columns.sort((a,b:any)=>{
-      var da = new Date((<any>a).date).getTime();
-      var db = new Date((<any>b).date).getTime();
-      
-      return da < db ? -1 : da > db ? 1 : 0
+    console.log('asc');
+
+    this.restapi.getColumnSortAsc()
+    .subscribe(
+    (val) => {
+        console.log("POST call successful value returned in body",val);
+        this.columns = val;
+        // this.columns = val[0];
+        // this.columnsTwo = val[0].columns
+        // return val;
+      },
+    response => {
+        console.log("POST call in error", response.token);
+      },
+      () => {
+        console.log("The POST observable is now completed.");
     });
 
 
-    console.log(sorted)
+    
 
-    this.columns = sorted;
+
+    // let sorted :any = this.columns.sort((a,b:any)=>{
+    //   var da = new Date((<any>a).date).getTime();
+    //   var db = new Date((<any>b).date).getTime();
+      
+    //   return da < db ? -1 : da > db ? 1 : 0
+    // });
+
+
+    // console.log(sorted)
+
+    // this.columns = sorted;
 
 
   }
 
   sortByDes(){
+
+    this.restapi.getColumnSortDes()
+    .subscribe(
+    (val) => {
+        console.log("POST call successful value returned in body",val);
+        this.columns = val
+        // this.columns = val[0];
+        // this.columnsTwo = val[0].columns
+        // return val;
+      },
+    response => {
+        console.log("POST call in error", response.token);
+      },
+      () => {
+        console.log("The POST observable is now completed.");
+    });
 
   }
 

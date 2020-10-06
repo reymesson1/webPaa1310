@@ -18,6 +18,10 @@ app.get('/logout', userController.getLogout);
 
 app.get('/columns', columnController.getColumn);
 
+app.get('/columnsortasc', columnController.getColumnSortedAsc);
+
+app.get('/columnsortdes', columnController.getColumnSortedDes);
+
 app.post('/updatecolumns', columnController.updateColumns);
 
 app.post('/customcolumns', columnController.getColumnCustom);
