@@ -2,13 +2,10 @@
     <button (click)="openMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
     </button>
-    <span>Video Streaming Project</span>
-    <div class="col-md-offset-10">
-        <button *ngIf="bool" (click)="play()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>volume_up</mat-icon>
-        </button>
-        <button *ngIf="!bool" (click)="play()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>volume_off</mat-icon>
+    <span routerLink="/home">Video Streaming Project</span>
+    <div class="col-md-offset-8">
+        <button routerLink="/profile" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>person</mat-icon>
         </button>
     </div>
 </mat-toolbar>

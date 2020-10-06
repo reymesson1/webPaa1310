@@ -23,6 +23,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { DialogOverviewExampleDialog } from './dashboard/dialog-overview-example-dialog';
 import { UserComponent } from './user/user.component';
@@ -32,6 +34,7 @@ import { RecapComponent } from './recap/recap.component';
 import { HistorialComponent } from './historial/historial.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FilterPipe } from './filter.pipe';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -46,7 +49,8 @@ import { FilterPipe } from './filter.pipe';
     RecapComponent,
     HistorialComponent,
     LoadingComponent,
-    FilterPipe
+    FilterPipe,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,8 @@ import { FilterPipe } from './filter.pipe';
     MatCardModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
