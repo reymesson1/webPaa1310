@@ -5,6 +5,21 @@ var jwt = require('jwt-simple');
 exports.getColumn = async(req,res)=>{
 
     var column = await Column.find({})
+
+    // var userObj = req.body    
+    // var decode = jwt.decode(req.body.token,'123')
+    
+    // var column = await Column.find({"creator":decode.sub})
+    
+    res.send(column);
+}
+
+exports.getColumnToken = async(req,res)=>{
+
+    var userObj = req.body    
+    var decode = jwt.decode(req.body.token,'123')
+    
+    var column = await Column.find({"creator":decode.sub})
     
     res.send(column);
 }

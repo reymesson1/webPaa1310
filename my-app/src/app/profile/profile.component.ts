@@ -9,10 +9,13 @@ export class ProfileComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  username
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.username = localStorage.getItem('username')
   }
 
 }

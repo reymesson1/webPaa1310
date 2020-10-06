@@ -18,6 +18,8 @@ app.get('/logout', userController.getLogout);
 
 app.get('/columns', columnController.getColumn);
 
+app.post('/columnstoken', columnController.getColumnToken);
+
 app.get('/columnsortasc', columnController.getColumnSortedAsc);
 
 app.get('/columnsortdes', columnController.getColumnSortedDes);

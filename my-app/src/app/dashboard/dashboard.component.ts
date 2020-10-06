@@ -45,11 +45,25 @@ export class DashboardComponent implements OnInit {
 
     // this.columns = this.restapi.columns;
 
-    this.restapi.getMaster()
-    .subscribe((data:any) => data.map((dat:any)=>{
-      console.log(dat)
-      this.columns.push(dat)
-    }));
+    // this.restapi.getMaster()
+    // .subscribe((data:any) => data.map((dat:any)=>{
+    //   console.log(dat)
+    //   this.columns.push(dat)
+    // }));
+
+    this.restapi.getMasterToken()
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            this.columns = val
+        },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
 
     if(!this.restapi.isAuthenticated){
       this.openDialogLogin()

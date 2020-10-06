@@ -193,6 +193,12 @@ export class RestapiService {
 
   getMaster(){
 
+    // return this.http.post(this.path+"column",
+    // {
+    //   "date": moment().format("YYYY-MM-DD hh:mm"),
+    //   "token": this.token
+    // },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
     // return this.http.get("http://localhost:8082/columns",
     return this.http.get(this.path+"columns",
     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
@@ -209,6 +215,17 @@ export class RestapiService {
     //     () => {
     //       console.log("The POST observable is now completed.");
     // });
+
+
+  }
+
+  getMasterToken(){
+
+    return this.http.post(this.path+"columnstoken",
+    {
+      "date": moment().format("YYYY-MM-DD hh:mm"),
+      "token": this.token
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
 
   }
