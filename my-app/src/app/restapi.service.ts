@@ -9,6 +9,7 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  openProfile : boolean = false;
   isActive: boolean = false;
   closeRegister : boolean = false;
   username : string = "";
@@ -19,8 +20,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  // path = "http://localhost:8083/";
-  path = "http://167.172.143.106:8083/";
+  path = "http://localhost:8083/";
+  // path = "http://167.172.143.106:8083/";
   
   authPath = this.path + '/login';
 

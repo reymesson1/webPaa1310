@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RestapiService } from '../restapi.service';
+import { UserComponent } from '../user/user.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile',
@@ -10,13 +13,33 @@ export class ProfileComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
   username
+  dialogRef
 
-  constructor() { }
+  constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
     this.username = localStorage.getItem('username')
+    if(!this.restapi.isAuthenticated){
+        // this.openDialogLogin()
+        // this.restapi.openProfile = true;
+        this.openDialog();
+    }    
   }
+
+  openDialog(): void {
+
+    this.dialogRef = this.dialog.open(UserComponent, {
+      width: '800px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    this.dialogRef.disableClose = true;
+
+
+  }
+
+
 
 }
 

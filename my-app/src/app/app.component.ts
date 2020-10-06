@@ -14,6 +14,11 @@ export class AppComponent {
   
 
   constructor(public dialog: MatDialog) { }
+
+  openDialog(){
+
+    
+  }
   
   openMenu(){
 
