@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef, AfterViewInit, ViewChild } from '@angular/core';
 import { RestapiService, Task, Column } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from './dialog-overview-example-dialog';
@@ -7,6 +7,7 @@ import { UserComponent } from '../user/user.component';
 import { LoadingComponent } from '../loading/loading.component';
 import {NgForm} from '@angular/forms';
 import * as moment from 'moment';
+import {MatPaginator} from '@angular/material/paginator';
 
  
 @Component({ 
@@ -15,6 +16,8 @@ import * as moment from 'moment';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   
   constructor(private restapi : RestapiService, public dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
@@ -32,7 +35,7 @@ export class DashboardComponent implements OnInit {
   dialogRef
   dialogRefLoading
   filterStatus = '';
-  length = 100;
+  length = 90;
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 100];
 
@@ -58,7 +61,35 @@ export class DashboardComponent implements OnInit {
 
     
   }
+
+  PageEvents(event) {
   
+    console.log(event.pageSize)
+    this.restapi.setColumnSortTop(event.pageSize)
+    .subscribe(
+        (val) => {
+            console.log("POST call successful value returned in body",val);
+            this.columns = val
+            // this.columns = val[0];
+            // this.columnsTwo = val[0].columns
+            // return val;
+         },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
+    
+    
+  }
+  
+  ngAfterViewChecked(){
+
+    // console.log(this.paginator)
+
+  }
   // ngAfterViewChecked(){
     
   //   if(this.restapi.isStarted){

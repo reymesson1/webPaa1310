@@ -22,6 +22,8 @@ app.get('/columnsortasc', columnController.getColumnSortedAsc);
 
 app.get('/columnsortdes', columnController.getColumnSortedDes);
 
+app.post('/columnsorttop', columnController.getColumnSortedTop);
+
 app.post('/updatecolumns', columnController.updateColumns);
 
 app.post('/customcolumns', columnController.getColumnCustom);

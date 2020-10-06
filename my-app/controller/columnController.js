@@ -112,3 +112,10 @@ exports.getColumnSortedDes = async(req,res)=>{
     
     res.send(column);
 }
+
+exports.getColumnSortedTop = async(req,res)=>{
+
+    var column = await Column.find({}).sort({"date":-1}).limit(req.body.top)
+    
+    res.send(column);
+}

@@ -338,7 +338,7 @@ export class RestapiService {
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
-
+  
   getColumnSortAsc(){
 
     // return this.http.post("http://localhost:8082/customcolumns",
@@ -354,6 +354,18 @@ export class RestapiService {
      {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
+
+  setColumnSortTop(top){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.post(this.path+"columnsorttop",
+    {
+      "top": top
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+  
+
 
 
 
