@@ -3,18 +3,18 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span routerLink="/home">Video Streaming Project</span>
-    <div class="col-md-offset-8">
+    <!-- <div class="col-md-offset-8">
         <button routerLink="/profile" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>person</mat-icon>
         </button>
-    </div>
-    <!-- <div class="col-md-offset-8">
-            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
-            <mat-menu #menu="matMenu">
-                    <button (click)="sortByAsc()" mat-menu-item>Profile</button>
-                    <button (click)="openDialog()" mat-menu-item>Login</button>
-            </mat-menu>
     </div> -->
+    <div class="col-md-offset-8">
+            <button routerLink="/profile" mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                    <!-- <button (click)="sortByAsc()" mat-menu-item>Profile</button> -->
+                    <button (click)="logout()" mat-menu-item>Logout</button>
+            </mat-menu>
+    </div>
 </mat-toolbar>
 <div class="row">
     <router-outlet></router-outlet>

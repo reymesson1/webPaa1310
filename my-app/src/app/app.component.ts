@@ -15,8 +15,9 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(){
+  logout(){
 
+    localStorage.removeItem('token');
     
   }
   
