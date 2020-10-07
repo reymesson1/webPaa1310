@@ -83,3 +83,21 @@ exports.getUser = async(req,res)=>{
     res.send(user);
 
 }
+
+exports.updateRegister = async(req,res)=>{
+    
+    var userData = req.body;
+
+    var user = await User.findOne({"username":req.body.username}, function(err,c){
+        c.name = req.body.name
+        c.lastname = req.body.lastname
+        c.permission = req.body.permission
+        c.save(function(err,c){
+            console.log("User updated");
+        })        
+
+    })
+
+    res.send(user)
+}
+

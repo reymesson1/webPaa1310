@@ -11,6 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class RegisterComponent implements OnInit {
 
+  currentValue : string = "editmode2"
+  userEditArr
+  editMode : boolean = false
   permission
   animal: string;
   name: string = "Registration"
@@ -29,8 +32,16 @@ export class RegisterComponent implements OnInit {
     this.openSnackBar();
 
     this.btn_enable = true;
+
+    if(this.editMode){
+
+      this.restapi.updateUserRegistration(event);
+
+    }else{
+
+      this.restapi.sendUserRegistration(event);
+    }
     
-    this.restapi.sendUserRegistration(event);
   }
 
   openDialog(){
@@ -42,6 +53,9 @@ export class RegisterComponent implements OnInit {
 
     this.permission = localStorage.getItem('permission')
 
+    this.editMode = this.restapi.userEditMode
+
+    this.userEditArr = this.restapi.userEditArr
 
   }
 }

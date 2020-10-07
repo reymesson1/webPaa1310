@@ -41,6 +41,8 @@ app.post('/historial', columnController.getHistorial);
 app.post('/column', columnController.setColumn);
 
 app.post('/register', userController.setRegister);
+
+app.post('/updateregister', userController.updateRegister);
   
 app.post('/login', userController.setLogin);
 

@@ -10,6 +10,7 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class UserListComponent implements OnInit {
 
+  editMode : boolean = false;
   name : string = 'New User';
   displayedColumns: string[] = ['_id','username', 'name', 'lastname', 'permission', 'symbol'];
   // dataSource = ELEMENT_DATA;
@@ -43,6 +44,30 @@ export class UserListComponent implements OnInit {
     // });
   
 
+  }
+
+  edit(id){
+
+    console.log('edit')
+    console.log(id)
+
+    for(var x=0;x<this.dataSource.length;x++){
+
+      if(this.dataSource[x]._id==id){
+        console.log(this.dataSource[x]);
+        this.restapi.userEditArr = this.dataSource[x];
+      }
+
+    }
+
+    this.restapi.userEditMode = true;
+
+    this.openDialog();
+  }
+
+  delete(){
+
+    console.log('delete');
   }
 
   getUsers(){

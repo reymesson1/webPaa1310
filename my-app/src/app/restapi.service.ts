@@ -9,6 +9,8 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  userEditArr
+  userEditMode : boolean = false;
   openProfile : boolean = false;
   isActive: boolean = false;
   closeRegister : boolean = false;
@@ -392,6 +394,50 @@ export class RestapiService {
     return this.http.get(this.path+"user",
      {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
+  }
+
+  updateUserRegistration(loginData) { 
+
+    // this.http.post("http://localhost:8082/register",
+    this.http.post(this.path+"updateregister",
+    {
+      "id": "1",
+      "username": loginData.value.username,
+      "name": loginData.value.name,
+      "lastname": loginData.value.lastname,
+      "permission": "1"
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            localStorage.setItem(this.TOKEN_KEY, val.token)
+            if(this.isAuthenticated){
+                location.reload();
+            }else{
+                console.log("Registration Failed")
+            }   
+
+         },
+        response => {
+          console.log("POST call in error", response.token);
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
+
+    // this.http.post<any>(this.authPath + '/register', regData).subscribe(res =>{ 
+    //     console.log(res) 
+    //     localStorage.setItem(this.TOKEN_KEY, res.token)  
+    //     if(this.isAuthenticated){
+    //         this.route.navigateByUrl("/")
+    //     }else{
+    //         console.log("Registration Failed")
+    //     }     
+    // })
+    
   }
 
   
