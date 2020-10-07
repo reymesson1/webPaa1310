@@ -10,7 +10,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class UserListComponent implements OnInit {
 
   users
-  displayedColumns: string[] = ['username', 'permission', 'weight', 'symbol'];
+  displayedColumns: string[] = ['_id','username', 'name', 'lastname', 'permission', 'symbol'];
   // dataSource = ELEMENT_DATA;
   dataSource
   username

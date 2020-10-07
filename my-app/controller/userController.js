@@ -11,6 +11,8 @@ exports.setRegister = async(req,res)=>{
 
     var user = new User({
         "username":userData.username,
+        "name":userData.name,
+        "lastname":userData.lastname,
         "permission":userData.permission
     })
     bcrypt.hash(userData.password, null, null, (err, hash)=>{                   

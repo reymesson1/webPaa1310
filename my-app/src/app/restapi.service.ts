@@ -142,6 +142,8 @@ export class RestapiService {
       "id": "1",
       "username": loginData.value.username,
       "password": loginData.value.password,
+      "name": loginData.value.name,
+      "lastname": loginData.value.lastname,
       "permission": "1"
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
