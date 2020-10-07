@@ -35,6 +35,7 @@ import { HistorialComponent } from './historial/historial.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FilterPipe } from './filter.pipe';
 import { ProfileComponent } from './profile/profile.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ProfileComponent } from './profile/profile.component';
     HistorialComponent,
     LoadingComponent,
     FilterPipe,
-    ProfileComponent
+    ProfileComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

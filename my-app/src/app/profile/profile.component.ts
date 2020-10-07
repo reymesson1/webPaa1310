@@ -10,10 +10,12 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class ProfileComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id', 'date', 'weight', 'symbol'];
+  // dataSource = ELEMENT_DATA;
+  dataSource
   username
   dialogRef
+  permission
 
   constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
@@ -21,22 +23,36 @@ export class ProfileComponent implements OnInit {
 
     this.username = localStorage.getItem('username')
     if(!this.restapi.isAuthenticated){
-        // this.openDialogLogin()
-        // this.restapi.openProfile = true;
         this.openDialog();
     }    
+
+    this.restapi.getMasterToken()
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            // this.columns = val
+            this.dataSource = val
+        },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+
+    this.permission = localStorage.getItem("permission")
+
+
+
   }
 
   openDialog(): void {
 
     this.dialogRef = this.dialog.open(UserComponent, {
       width: '800px',
-      // data: {name: this.name, animal: this.animal}
     });
 
     this.dialogRef.disableClose = true;
-
-
   }
 
 

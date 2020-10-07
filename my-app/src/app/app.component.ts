@@ -18,6 +18,7 @@ export class AppComponent {
   logout(){
 
     localStorage.removeItem('token');
+    localStorage.removeItem('permission');
     
   }
   

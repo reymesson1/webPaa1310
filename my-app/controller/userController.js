@@ -10,7 +10,8 @@ exports.setRegister = async(req,res)=>{
     var userData = req.body;
 
     var user = new User({
-        "username":userData.username
+        "username":userData.username,
+        "permission":userData.permission
     })
     bcrypt.hash(userData.password, null, null, (err, hash)=>{                   
         user.password = hash;          
@@ -41,7 +42,7 @@ exports.setLogin = async(req,res)=>{
         
         var token = jwt.encode(payload, '123')
 
-        res.status(200).send({token})
+        res.status(200).send({"token":token,"permission":user.permission})
     })
 }
 exports.setResetPassword = async(req,res)=>{
@@ -71,4 +72,12 @@ exports.getLogout = async(req,res)=>{
     
     cookies = false;
     res.redirect('/');
+}
+
+exports.getUser = async(req,res)=>{
+    
+    var user = await User.find()
+
+    res.send(user);
+
 }

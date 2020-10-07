@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
         (val:any) => {
             console.log("POST call successful value returned in body",val);
             localStorage.setItem(this.restapi.TOKEN_KEY, val.token)
+            localStorage.setItem("permission", val.permission)
             if(this.restapi.isAuthenticated){
                 location.reload();
             }else{
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
         () => {
           console.log("The POST observable is now completed.");
     }); 
+
+    // debugger;
 
   }
 

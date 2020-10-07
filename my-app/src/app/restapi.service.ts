@@ -20,8 +20,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  // path = "http://localhost:8083/";
-  path = "http://167.172.143.106:8083/";
+  path = "http://localhost:8083/";
+  // path = "http://167.172.143.106:8083/";
   
   authPath = this.path + '/login';
 
@@ -141,7 +141,8 @@ export class RestapiService {
     {
       "id": "1",
       "username": loginData.value.username,
-      "password": loginData.value.password
+      "password": loginData.value.password,
+      "permission": "1"
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
         (val:any) => {
@@ -382,6 +383,15 @@ export class RestapiService {
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
+
+  getUser(){
+
+    // return this.http.post("http://localhost:8082/customcolumns",
+    return this.http.get(this.path+"user",
+     {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
   
 
 
