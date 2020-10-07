@@ -11,8 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class RegisterComponent implements OnInit {
 
+  permission
   animal: string;
-  name: string;
+  name: string = "Registration"
   durationInSeconds = 5;
   btn_enable : boolean = false;
   constructor(private restapi : RestapiService, private _snackBar: MatSnackBar) { }
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.permission = localStorage.getItem('permission')
 
 
   }

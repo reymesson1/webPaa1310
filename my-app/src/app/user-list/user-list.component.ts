@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestapiService} from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class UserListComponent implements OnInit {
 
-  users
+  name : string = 'New User';
   displayedColumns: string[] = ['_id','username', 'name', 'lastname', 'permission', 'symbol'];
   // dataSource = ELEMENT_DATA;
   dataSource
@@ -23,6 +24,24 @@ export class UserListComponent implements OnInit {
 
     this.getUsers();
     this.permission = localStorage.getItem('permission')
+
+  }
+
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      width: '450px',
+      data: {name: this.name}
+    });
+
+    // dialogRef.disableClose = true;
+
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
+  
 
   }
 
