@@ -18,6 +18,27 @@ export class DialogOverviewExampleDialog {
     constructor(private cdr: ChangeDetectorRef, private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
+    handleFileInput(event){
+        console.log(event);
+        this.restapi.getBucket()
+        .subscribe(
+            (val) => {
+                console.log("POST call successful value returned in body",val);
+                // this.columns = val[0];
+                // this.columnsTwo = val[0].columns
+                // return val;
+            },
+            response => {
+            console.log("POST call in error", response.token);
+            },
+            () => {
+            console.log("The POST observable is now completed.");
+        });
+
+
+
+    }
+
     ngAfterViewChecked(){
 
         this.isStarted = this.restapi.isStartedComp;

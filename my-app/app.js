@@ -9,8 +9,10 @@ var User = require('./models/user.js');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
+var AWS = require('aws-sdk');
 var userController = require('./controller/userController');
 var columnController = require('./controller/columnController');
+var awsController = require('./controller/awsController');
 var cors = require('cors');
 app.use(cors())
 
@@ -49,6 +51,8 @@ app.post('/login', userController.setLogin);
 app.post('/resetpassword', userController.setResetPassword);
 
 app.get('/user', userController.getUser);
+
+app.get('/bucket', awsController.getBucket);
 
 mongoose.connect('mongodb://localhost:27017/youtube',(err)=>{
     if(!err){
