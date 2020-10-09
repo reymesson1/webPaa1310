@@ -20,7 +20,7 @@ var AWS = require('aws-sdk');
 var multer = require('multer')
 
 
-var albumBucketName = "youtube-project-2";
+var albumBucketName = "youtube-project-2/assets";
 var bucketRegion = "us-east-1";
 var IdentityPoolId = "us-east-1:3dd5b3b8-326c-4be6-9f32-67943932637a";//old
 
