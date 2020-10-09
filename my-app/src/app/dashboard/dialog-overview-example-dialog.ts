@@ -14,26 +14,37 @@ export class DialogOverviewExampleDialog {
     isScore : boolean = false;
     actualId : number = 0;
     isStarted : boolean = false;
+    fileToUpload: File = null;
+
 
     constructor(private cdr: ChangeDetectorRef, private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
-    handleFileInput(event){
-        console.log(event);
-        this.restapi.getBucket()
-        .subscribe(
-            (val) => {
-                console.log("POST call successful value returned in body",val);
-                // this.columns = val[0];
-                // this.columnsTwo = val[0].columns
-                // return val;
-            },
-            response => {
-            console.log("POST call in error", response.token);
-            },
-            () => {
-            console.log("The POST observable is now completed.");
-        });
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+        // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
+        this.restapi.updateBucket(this.fileToUpload);
+        console.log(this.fileToUpload);
+    }
+    
+
+    handleFileInput2(event){
+        // console.log(event);
+        this.restapi.updateBucket(event)    
+        // this.restapi.getBucket()
+        // .subscribe(
+        //     (val) => {
+        //         console.log("POST call successful value returned in body",val);
+        //         // this.columns = val[0];
+        //         // this.columnsTwo = val[0].columns
+        //         // return val;
+        //     },
+        //     response => {
+        //     console.log("POST call in error", response.token);
+        //     },
+        //     () => {
+        //     console.log("The POST observable is now completed.");
+        // });
 
 
 

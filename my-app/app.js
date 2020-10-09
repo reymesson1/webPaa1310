@@ -16,6 +16,15 @@ var awsController = require('./controller/awsController');
 var cors = require('cors');
 app.use(cors())
 
+var AWS = require('aws-sdk');
+var multer = require('multer')
+
+
+var albumBucketName = "youtube-project-2";
+var bucketRegion = "us-east-1";
+var IdentityPoolId = "us-east-1:3dd5b3b8-326c-4be6-9f32-67943932637a";//old
+
+
 app.get('/logout', userController.getLogout);
 
 app.get('/columns', columnController.getColumn);
@@ -54,6 +63,49 @@ app.get('/user', userController.getUser);
 
 app.get('/bucket', awsController.getBucket);
 
+// app.post('/updatebucket', awsController.updateBucket);
+
+const storage = multer.memoryStorage({
+    destination: function(req, file, callback) {
+        callback(null, '')
+    }
+})
+
+// const upload = multer({storage}).single('image')
+const upload = multer({storage}).single('file')
+
+app.post('/updatebucket',upload,(req, res) => {
+
+
+    let myFile = req.file.originalname.split(".")
+    const fileType = myFile[myFile.length - 1]
+
+    // var photoKey = ""+fileName
+
+    var upload = new AWS.S3.ManagedUpload({
+        params: {
+        Bucket: albumBucketName,
+        Key: req.file.originalname,
+        Body: req.file.buffer,
+        ACL: "public-read"
+        }
+    });
+
+    var promise = upload.promise();
+
+    promise.then(
+        function(data) {
+        console.log("Successfully uploaded photo.");
+        // viewAlbum(albumName);
+        },
+        function(err) {
+        // return alert("There was an error uploading your photo: ", err.message);
+        console.log("There was an error uploading your photo: ", err.message);
+        }
+    );
+
+
+});
 mongoose.connect('mongodb://localhost:27017/youtube',(err)=>{
     if(!err){
         console.log('Connected to mongo Database');

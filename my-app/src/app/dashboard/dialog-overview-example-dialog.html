@@ -7,9 +7,12 @@
             </div>
         <div class="col-md-4">
                 <!-- <button mat-button color="primary" (click)="reset()" >Upload video</button> -->
-                <input type="file"
+                <!-- <input type="file"
                 id="file"
-                (change)="handleFileInput($event.target.files)">
+                (change)="handleFileInput($event)"> -->
+                <!-- (change)="handleFileInput($event.target.files)"> -->
+                <input class="form-control" type="file" placeholder="file" name="file" id="file" ngModel #first="ngModel"            (change)="handleFileInput($event.target.files)"/>
+
         </div>
         <div class="col-md-4">
         </div>

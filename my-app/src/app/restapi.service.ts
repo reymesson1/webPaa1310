@@ -448,6 +448,52 @@ export class RestapiService {
 
   }
 
+  updateBucket(event){
+
+    const formData: FormData = new FormData();
+    formData.append('file', event, event.name);
+    
+    // const formData: FormData = new FormData();
+    // formData.append('file', event, event.name);
+
+    // this.http.post("http://localhost:8080/uploadexcel",
+    this.http.post(this.path+"updatebucket",
+    formData,{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+          (val) => {
+              console.log("POST call successful value returned in body",val);
+          },
+          response => {
+            // this.data=response;
+            console.log("POST call in error", response);
+          },
+          () => {
+            console.log("The POST observable is now completed.");
+    });
+
+
+    // console.log(file)
+
+    // this.http.post(this.path+"updatebucket",
+    // {
+    //   "id": "1",
+    //   "files": file,
+    // },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    // .subscribe(
+    //     (val:any) => {
+    //         console.log("POST call successful value returned in body",val);    
+    //     },
+    //     response => {
+    //       console.log("POST call in error", response.token);
+
+    //     },
+    //     () => {
+    //       console.log("The POST observable is now completed.");
+    // }); 
+
+
+  }
+
 
   
 
