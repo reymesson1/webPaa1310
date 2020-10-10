@@ -35,6 +35,10 @@ export class DashboardComponent implements OnInit {
   play : boolean = false;
   dialogRef
   dialogRefLoading
+  dialogRefVideo
+  dialogRefVideo2
+  dialogRefVideo3
+  dialogRefvideo4
   filterStatus = '';
   length = 90;
   pageSize = 10;
@@ -498,15 +502,27 @@ export class DashboardComponent implements OnInit {
 
     
     // width: '150px',height: '110px',
-    this.dialogRefLoading = this.dialog.open(ViewScoreComponent, {
+    this.dialogRefVideo = this.dialog.open(ViewScoreComponent, {
       width: '750px',height: '750px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
-    this.dialogRefLoading.disableClose = true;
-
+    // this.dialogRefLoading.disableClose = true;
 
   }
+
+  openDialogVideo2(){
+
+    
+
+    this.dialogRefVideo2 = this.dialog.open(ViewScoreComponent, {
+      width: '750px',height: '750px',
+      data: {name: this.name, animal: this.animal,'test':'test'}
+    });
+
+  
+  }
+
 
 
   onClick(columnId,rowId){

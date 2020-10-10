@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestapiService } from '../restapi.service'; 
 
 @Component({
   selector: 'app-view-score',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewScoreComponent implements OnInit {
 
-  constructor() { }
+  message : String = ""
+
+  constructor(public restapi : RestapiService) { }
 
   ngOnInit(): void {
+
+    this.message = this.restapi.messageModal 
+  }
+
+  viewModal(){
+
   }
 
 }

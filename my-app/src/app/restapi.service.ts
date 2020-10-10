@@ -9,6 +9,7 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  messageModal = "";
   userEditArr
   userEditMode : boolean = false;
   openProfile : boolean = false;

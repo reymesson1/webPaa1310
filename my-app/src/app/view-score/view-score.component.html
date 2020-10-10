@@ -1,6 +1,6 @@
 <div class="row" >
 
-    <h1>Test</h1>
+    <h1>{{message}}</h1>
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <div class="col-md-offset-10">
             <div class="row">
@@ -11,7 +11,7 @@
                             <button mat-menu-item>480p</button>
                             <button mat-menu-item>360p</button>
                             <button mat-menu-item>240p</button>
-                            <button mat-menu-item>144p</button>
+                            <button (click)="viewModal()" mat-menu-item>144p</button>
                     </mat-menu>
             </div>
     </div>
