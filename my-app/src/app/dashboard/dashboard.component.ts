@@ -500,9 +500,10 @@ export class DashboardComponent implements OnInit {
   }
   openDialogVideo(){
 
+    this.restapi.messageModal = "Video 1"
     
     // width: '150px',height: '110px',
-    this.dialogRefVideo = this.dialog.open(ViewScoreComponent, {
+    this.restapi.dialogRefVideo = this.dialog.open(ViewScoreComponent, {
       width: '750px',height: '750px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
@@ -513,9 +514,9 @@ export class DashboardComponent implements OnInit {
 
   openDialogVideo2(){
 
-    
+    this.restapi.dialogRefVideo.close();
 
-    this.dialogRefVideo2 = this.dialog.open(ViewScoreComponent, {
+    this.restapi.dialogRefVideo2 = this.dialog.open(ViewScoreComponent, {
       width: '750px',height: '750px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });

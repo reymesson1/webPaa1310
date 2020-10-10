@@ -6,11 +6,11 @@
             <div class="row">
                     <button mat-button [matMenuTriggerFor]="menu"><i style="font-size:26px;" class="fa fa-cog"></i></button>
                     <mat-menu #menu="matMenu">
-                            <button mat-menu-item>1080p</button>
-                            <button mat-menu-item>720p</button>
-                            <button mat-menu-item>480p</button>
-                            <button mat-menu-item>360p</button>
-                            <button mat-menu-item>240p</button>
+                            <button (click)="viewModal7()" mat-menu-item>1080p</button>
+                            <button (click)="viewModal5()" mat-menu-item>720p</button>
+                            <button (click)="viewModal4()" mat-menu-item>480p</button>
+                            <button (click)="viewModal3()" mat-menu-item>360p</button>
+                            <button (click)="viewModal2()" mat-menu-item>240p</button>
                             <button (click)="viewModal()" mat-menu-item>144p</button>
                     </mat-menu>
             </div>

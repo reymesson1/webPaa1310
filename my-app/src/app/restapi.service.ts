@@ -9,6 +9,12 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  dialogRefVideo
+  dialogRefVideo2
+  dialogRefVideo3
+  dialogRefVideo4
+  dialogRefVideo5
+  dialogRefVideo7
   messageModal = "";
   userEditArr
   userEditMode : boolean = false;
