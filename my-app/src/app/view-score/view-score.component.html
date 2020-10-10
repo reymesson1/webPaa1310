@@ -1,16 +1,19 @@
 <div class="row" >
 
-    <mat-tab-group>
-        <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"> 
-
-            <app-recap></app-recap>
-        
-        </mat-tab>
-        <mat-tab label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"> 
-        
-            <app-historial></app-historial>
-
-        </mat-tab>
-    </mat-tab-group>
+    <h1>Test</h1>
+    <img (click)="openDialogVideo()" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <div class="col-md-offset-10">
+            <div class="row">
+                    <button mat-button [matMenuTriggerFor]="menu"><i style="font-size:26px;" class="fa fa-cog"></i></button>
+                    <mat-menu #menu="matMenu">
+                            <button (click)="sortByAsc()" mat-menu-item>1080p</button>
+                            <button (click)="sortByAsc()" mat-menu-item>720p</button>
+                            <button (click)="sortByAsc()" mat-menu-item>480p</button>
+                            <button (click)="sortByAsc()" mat-menu-item>360p</button>
+                            <button (click)="sortByDes()" mat-menu-item>240p</button>
+                            <button (click)="sortByDes()" mat-menu-item>144p</button>
+                    </mat-menu>
+            </div>
+    </div>
 
 </div>

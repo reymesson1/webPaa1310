@@ -15,6 +15,7 @@ export class DialogOverviewExampleDialog {
     actualId : number = 0;
     isStarted : boolean = false;
     fileToUpload: File = null;
+    fileName : String = "";
 
 
     constructor(private cdr: ChangeDetectorRef, private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
@@ -25,6 +26,7 @@ export class DialogOverviewExampleDialog {
         // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
         this.restapi.updateBucket(this.fileToUpload);
         console.log(this.fileToUpload);
+        this.fileName = this.fileToUpload.name;
     }
     
 
@@ -91,6 +93,16 @@ export class DialogOverviewExampleDialog {
         this.restapi.actualId = this.actualId;
         console.log('saveState ' + this.actualId);
         this.restapi.muestrameTablero = true;
+    }
+
+    createJob(){
+
+        console.log("creating a job");
+
+        this.restapi.creatingJob(this.fileName);
+
+        this.dialogRef.close();
+
     }
 
     reset(){

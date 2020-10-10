@@ -22,8 +22,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  // path = "http://localhost:8083/";
-  path = "http://167.172.143.106:8083/";
+  path = "http://localhost:8083/";
+  // path = "http://167.172.143.106:8083/";
   
   authPath = this.path + '/login';
 
@@ -492,6 +492,47 @@ export class RestapiService {
     // }); 
 
 
+  }
+
+  creatingJob(imagenew) { 
+
+    // this.http.post("http://localhost:8082/register",
+    this.http.post(this.path+"creatingjobbucket",
+    {
+      "id": "1",
+      "image": imagenew
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            localStorage.setItem(this.TOKEN_KEY, val.token)
+            if(this.isAuthenticated){
+                location.reload();
+            }else{
+                console.log("Registration Failed")
+            }   
+
+         },
+        response => {
+          console.log("POST call in error", response.token);
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
+
+    // this.http.post<any>(this.authPath + '/register', regData).subscribe(res =>{ 
+    //     console.log(res) 
+    //     localStorage.setItem(this.TOKEN_KEY, res.token)  
+    //     if(this.isAuthenticated){
+    //         this.route.navigateByUrl("/")
+    //     }else{
+    //         console.log("Registration Failed")
+    //     }     
+    // })
+    
   }
 
 

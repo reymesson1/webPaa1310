@@ -87,3 +87,68 @@ exports.updateBucket = async(req,res)=>{
 
 
 }
+
+exports.creatingJobBucket = async(req,res)=>{
+
+    console.log(req.body.image);
+
+    AWS.config.update({
+        region: bucketRegion,
+        credentials: new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: IdentityPoolId
+        })
+    });
+
+    var s3 = new AWS.S3({
+        apiVersion: "2006-03-01",
+        params: { Bucket: albumBucketName }
+    });
+
+
+    // var elastictranscoder = new AWS.ElasticTranscoder();
+    var elastictranscoder = new AWS.ElasticTranscoder(options = {
+        accessKeyId: 'AKIAVEA54VIIEI6DSO4F',
+        secretAccessKey: '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'
+    })
+
+    var key = req.body.image;
+    // var key = "Bow Down - Cindy Cruse Ratcliff-240p.mp4";
+    // var key = "Cindy Ratcliff (Prince of Peace)-360p.mp4";
+
+    var params = {
+        Input: { 
+           Key: key
+        },
+        PipelineId: '1602084185973-79jw01', 
+        OutputKeyPrefix: 'assets/',
+        Outputs: [
+         {
+             // Key: "aws-video-uploaded-10.mp4",
+             Key: "11"+key,
+            PresetId: '1351620000001-100180', // h264
+         },
+       {
+        //   Key: "aws-video-uploaded-11.mp4",
+          Key: "12"+key,
+          PresetId: '1351620000001-100180', // webm
+         }
+       ]
+     };
+
+     console.log('creating job....');
+
+    elastictranscoder.createJob(params, function(err, data) {
+       console.log('job created');
+       if (err){
+         console.log('ERROR...',err, err.stack); // an error occurred
+        //  context.fail();
+         return;
+       }else{
+         console.log('created job successfully');
+       }
+    //    context.succeed();
+    });
+
+
+
+}

@@ -8,6 +8,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import {NgForm} from '@angular/forms';
 import * as moment from 'moment';
 import {MatPaginator} from '@angular/material/paginator';
+import { ViewScoreComponent } from '../view-score/view-score.component';
 
  
 @Component({ 
@@ -486,6 +487,19 @@ export class DashboardComponent implements OnInit {
     // width: '150px',height: '110px',
     this.dialogRefLoading = this.dialog.open(LoadingComponent, {
       width: '150px',height: '150px',
+      data: {name: this.name, animal: this.animal,'test':'test'}
+    });
+
+    this.dialogRefLoading.disableClose = true;
+
+
+  }
+  openDialogVideo(){
+
+    
+    // width: '150px',height: '110px',
+    this.dialogRefLoading = this.dialog.open(ViewScoreComponent, {
+      width: '750px',height: '750px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
 

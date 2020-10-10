@@ -63,6 +63,8 @@ app.get('/user', userController.getUser);
 
 app.get('/bucket', awsController.getBucket);
 
+app.post('/creatingjobbucket', awsController.creatingJobBucket);
+
 // app.post('/updatebucket', awsController.updateBucket);
 
 const storage = multer.memoryStorage({
