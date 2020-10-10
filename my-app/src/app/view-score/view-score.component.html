@@ -1,8 +1,17 @@
-<div class="row" >
+<div style="overflow:hidden" >
 
     <h1>{{message}}</h1>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <div class="col-md-offset-10">
+    <video width="400" controls>
+        <source *ngIf="message=='Video 1'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+        <source *ngIf="message=='Video 2'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+        <source *ngIf="message=='Video 3'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+        <source *ngIf="message=='Video 4'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/480p-'+filename}}" type="video/mp4">
+        <source *ngIf="message=='Video 5'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/720p-'+filename}}" type="video/mp4">
+        <source *ngIf="message=='Video 7'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/1080p-'+filename}}" type="video/mp4">
+    </video>
+    <br/>
+    <br/>
+    <div class="col-md-offset-8">
             <div class="row">
                     <button mat-button [matMenuTriggerFor]="menu"><i style="font-size:26px;" class="fa fa-cog"></i></button>
                     <mat-menu #menu="matMenu">

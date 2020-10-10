@@ -112,6 +112,8 @@ exports.creatingJobBucket = async(req,res)=>{
     })
 
     var key = req.body.image;
+    // var str = key.substr(key.length-4,key.length);
+    // var str = key.substr(0,key.length-4);
     // var key = "Bow Down - Cindy Cruse Ratcliff-240p.mp4";
     // var key = "Cindy Ratcliff (Prince of Peace)-360p.mp4";
 
@@ -124,13 +126,30 @@ exports.creatingJobBucket = async(req,res)=>{
         Outputs: [
          {
              // Key: "aws-video-uploaded-10.mp4",
-             Key: "11"+key,
-            PresetId: '1351620000001-100180', // h264
+             Key: "360p-"+key,
+             ThumbnailPattern: key+'thumbs-{count}',
+             PresetId: '1351620000001-000050', // 360p
          },
        {
         //   Key: "aws-video-uploaded-11.mp4",
-          Key: "12"+key,
-          PresetId: '1351620000001-100180', // webm
+          Key: "480p-"+key,
+          ThumbnailPattern: key+'thumbs-{count}',
+          PresetId: '1351620000001-000030', // 480p
+
+         },
+       {
+        //   Key: "aws-video-uploaded-11.mp4",
+          Key: "720p-"+key,
+          ThumbnailPattern: key+'thumbs-{count}',
+          PresetId: '1351620000001-000010', // 720p
+
+         },
+       {
+        //   Key: "aws-video-uploaded-11.mp4",
+          Key: "1080p-"+key,
+          ThumbnailPattern: key+'thumbs-{count}',
+          PresetId: '1351620000001-000001', // 1080p
+
          }
        ]
      };

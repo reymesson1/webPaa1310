@@ -43,7 +43,8 @@
                 <div class="col-md-3" style="margin-bottom:10px;" *ngFor="let user of columns | filter:filterStatus:'id'">
 
                         <mat-card class="example-card">
-                                <img (click)="openDialogVideo()" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                                <!-- <img (click)="openDialogVideo()" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                                <img (click)="openDialogVideo(user.name)" mat-card-image src="{{'https://youtube-project-2.s3.amazonaws.com/assets/'+user.name+'thumbs-00001.png'}}" alt="Photo of a Shiba Inu">
                                 <mat-card-header>
                                                 <div mat-card-avatar class="example-header-image"></div>
                                                 <mat-card-title>Shiba Inu {{user.id}}</mat-card-title>

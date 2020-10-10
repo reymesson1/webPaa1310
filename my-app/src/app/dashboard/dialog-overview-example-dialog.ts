@@ -27,6 +27,7 @@ export class DialogOverviewExampleDialog {
         this.restapi.updateBucket(this.fileToUpload);
         console.log(this.fileToUpload);
         this.fileName = this.fileToUpload.name;
+        this.restapi.filename = this.fileToUpload.name;
     }
     
 
@@ -99,15 +100,20 @@ export class DialogOverviewExampleDialog {
 
         console.log("creating a job");
 
+        this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
+
         this.restapi.creatingJob(this.fileName);
 
+        this.reset()
+
         this.dialogRef.close();
+
 
     }
 
     reset(){
 
-        this.restapi.setMaster(this.restapi.columns, this.actualId);
+        // this.restapi.setMaster(this.restapi.columns, this.actualId);
 
         this.restapi.actualId = this.actualId;
 

@@ -9,6 +9,7 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  filename : String = ""
   dialogRefVideo
   dialogRefVideo2
   dialogRefVideo3
@@ -243,13 +244,14 @@ export class RestapiService {
 
   }
 
-  setMaster(columns : Column[],dataId){
+  setMaster(columns : Column[],dataId,name){
 
     // this.http.post("http://localhost:8082/column",
     this.http.post(this.path+"column",
     {
       "id": dataId,
       "date": moment().format("YYYY-MM-DD hh:mm"),
+      "name": name,
       "columns": columns,
       "status": this.status,
       "isActive": true,

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var columnSchema = new mongoose.Schema({
     id: String,
     date: String,
+    name: String,
     columns: Array,
     status: String,
     isActive: Boolean,

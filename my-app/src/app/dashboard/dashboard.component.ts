@@ -498,15 +498,17 @@ export class DashboardComponent implements OnInit {
 
 
   }
-  openDialogVideo(){
+  openDialogVideo(filename){
 
     this.restapi.messageModal = "Video 1"
     
     // width: '150px',height: '110px',
     this.restapi.dialogRefVideo = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
+
+    this.restapi.filename = filename;
 
     // this.dialogRefLoading.disableClose = true;
 

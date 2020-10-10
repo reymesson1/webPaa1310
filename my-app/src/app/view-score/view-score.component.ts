@@ -11,11 +11,14 @@ export class ViewScoreComponent implements OnInit {
 
   message : String = ""
 
+  filename : String = ""
+
   constructor(public restapi : RestapiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
     this.message = this.restapi.messageModal 
+    this.filename = this.restapi.filename
   }
 
   viewModal(){
@@ -43,7 +46,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 1"
 
     this.restapi.dialogRefVideo = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
@@ -75,7 +78,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 2"
 
     this.restapi.dialogRefVideo2 = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
@@ -108,7 +111,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 3"
 
     this.restapi.dialogRefVideo3 = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
@@ -141,7 +144,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 4"
 
     this.restapi.dialogRefVideo4 = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
@@ -174,7 +177,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 5"
 
     this.restapi.dialogRefVideo5 = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
@@ -208,7 +211,7 @@ export class ViewScoreComponent implements OnInit {
     this.restapi.messageModal = "Video 7"
 
     this.restapi.dialogRefVideo7 = this.dialog.open(ViewScoreComponent, {
-      width: '750px',height: '750px',
+      width: '550px',height: '400px',
       // data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
