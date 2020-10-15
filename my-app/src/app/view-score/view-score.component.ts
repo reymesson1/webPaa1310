@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RestapiService } from '../restapi.service'; 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -13,12 +13,53 @@ export class ViewScoreComponent implements OnInit {
 
   filename : String = ""
 
+  @ViewChild("video1") myVideo : ElementRef;
+
+  activeResolution : boolean = false;
+
+  play : boolean = false;
+
   constructor(public restapi : RestapiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
     this.message = this.restapi.messageModal 
     this.filename = this.restapi.filename
+  }
+
+  resolution(){
+
+    this.activeResolution = !this.activeResolution;
+
+  }
+
+  playPause(){
+
+    if(    this.myVideo.nativeElement.paused ){
+
+      this.play = !this.play
+      this.myVideo.nativeElement.play()
+      
+    }else{
+
+      this.play = !this.play
+      this.myVideo.nativeElement.pause()
+    }
+
+  } 
+
+  fullScreen(){
+
+    this.myVideo.nativeElement.webkitRequestFullscreen()
+  }
+  makeBig(){
+
+  }
+  makeSmall(){
+
+  }
+  makeNormal(){
+
   }
 
   viewModal(){

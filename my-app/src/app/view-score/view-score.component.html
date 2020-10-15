@@ -1,4 +1,41 @@
-<div style="overflow:hidden" >
+<div class="row" style="overflow:hidden;margin-top:8%;">
+
+        <div (click)="playPause()" style="text-align:center;">
+                <div>
+                        <video #video1 id="video1" width="420">
+                                                <source *ngIf="message=='Video 1'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+                                                <source *ngIf="message=='Video 2'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+                                                <source *ngIf="message=='Video 3'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/360p-'+filename}}" type="video/mp4">
+                                                <source *ngIf="message=='Video 4'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/480p-'+filename}}" type="video/mp4">
+                                                <source *ngIf="message=='Video 5'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/720p-'+filename}}" type="video/mp4">
+                                                <source *ngIf="message=='Video 7'" src="{{'https://youtube-project-2.s3.us-east-1.amazonaws.com/assets/1080p-'+filename}}" type="video/mp4">
+                                        Your browser does not support HTML video.
+                        </video>
+                </div>    
+                
+        </div> 
+        <div style="background-color: red;margin-top: -2%;width: 79%;margin-left: 10.6%;height: 35px;" >
+                <span *ngIf="!play" ><i style="color:white;margin-left:6%;font-size:21px;padding-top:2.1%;" (click)="playPause()" class="fa fa-play"></i> </span>
+                <span *ngIf="play" ><i style="color:white;margin-left:6%;font-size:21px;padding-top:2.1%;" (click)="playPause()" class="fa fa-pause"></i> </span>
+                <span><i style="color:white;margin-left:6%;font-size:21px;padding-top:2.1%;" (click)="playPause()" class="fa fa-volume-up"></i> </span>
+                <span><i style="color:white;margin-left:58%;font-size:21px;padding-top:2.1%;position:relative;display:inline-block;" (click)="resolution()" class="fa fa-cog"></i> </span>
+                <div *ngIf="activeResolution" class="resolution-display">
+
+                        <p (click)="viewModal7()">1080p</p>
+                        <p (click)="viewModal5()">720p</p>
+                        <p (click)="viewModal4()">480p</p>
+                        <p (click)="viewModal3()">360p</p>
+                </div>
+                <span><i style="color:white;margin-left:6%;font-size:21px;padding-top:2.1%;" (click)="fullScreen()" class="fa fa-expand"></i> </span>
+        </div>
+
+</div>
+
+
+
+
+
+<!-- <div style="overflow:hidden" >
 
     <h1>{{message}}</h1>
     <video width="400" controls>
@@ -25,4 +62,4 @@
             </div>
     </div>
 
-</div>
+</div> -->

@@ -1,0 +1,16 @@
+.resolution-display{
+
+    position:absolute;
+    background-color: #ffffff;
+    min-width: 78px;
+    box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index:1;
+    right: 36%;
+    top:41%;
+}
+
+
+p:hover {
+    background-color: gainsboro;
+}
