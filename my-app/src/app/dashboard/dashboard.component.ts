@@ -43,8 +43,11 @@ export class DashboardComponent implements OnInit {
   length = 90;
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 100];
-
+  isAuthenticated : boolean = false;
+  
   ngOnInit(): void { 
+
+    this.isAuthenticated = this.restapi.isAuthenticated;
 
     this.users = this.restapi.tasks; 
 
@@ -444,26 +447,34 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
 
-    this.dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '800px',
-      data: {name: this.name, animal: this.animal}
-    });
+    if(this.restapi.isAuthenticated){
 
-    // this.dialogRef.disableClose = true;
-
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
     
-//getcounter    
-    this.restapi.getCounter()
-    .subscribe((data:any) => data.map(dat=>{
-      // console.log(dat)
-      this.dataIn = dat.quantity
-      // this.restapi.setMaster(this.columns,dat.quantity);
 
-    }));
+      this.dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        width: '800px',
+        data: {name: this.name, animal: this.animal}
+      });
+
+      // this.dialogRef.disableClose = true;
+
+      this.dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.animal = result;
+      });
+      
+  //getcounter    
+      this.restapi.getCounter()
+      .subscribe((data:any) => data.map(dat=>{
+        // console.log(dat)
+        this.dataIn = dat.quantity
+        // this.restapi.setMaster(this.columns,dat.quantity);
+
+      }));
+    }else{
+
+      this.openDialogLogin();
+    }
 
   }
 
@@ -474,7 +485,7 @@ export class DashboardComponent implements OnInit {
       data: {name: this.name, animal: this.animal,'test':'test'}
     });
 
-    dialogRef.disableClose = true;
+    // dialogRef.disableClose = true;
 
 
     // dialogRef.afterClosed().subscribe(result => {
