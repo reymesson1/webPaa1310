@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { RestapiService, Task } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
     selector: 'dialog-overview-example-dialog',
@@ -18,7 +19,7 @@ export class DialogOverviewExampleDialog {
     fileName : String = "";
 
 
-    constructor(private cdr: ChangeDetectorRef, private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
+    constructor(private cdr: ChangeDetectorRef, public dialog: MatDialog,private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
     handleFileInput(files: FileList) {
@@ -62,6 +63,8 @@ export class DialogOverviewExampleDialog {
     }
 
     ngOnInit(): void { 
+
+
     
         this.message = this.restapi.message;
         this.restapi.getCounter()
@@ -98,18 +101,44 @@ export class DialogOverviewExampleDialog {
 
     createJob(){
 
-        console.log("creating a job");
+        // this.restapi.updateBucket(this.fileToUpload);
 
         this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
 
+        this.openDialogLoading()
+
+        console.log("creating a job");
+
         this.restapi.creatingJob(this.fileName);
 
-        this.reset()
 
-        this.dialogRef.close();
+        setTimeout(() => {
+
+
+            this.restapi.dialogRefLoading.close();
+    
+        }, 45000);
+
+        this.reset();
+
 
 
     }
+
+    openDialogLoading(){
+
+    
+        // width: '150px',height: '110px',
+        this.restapi.dialogRefLoading = this.dialog.open(LoadingComponent, {
+          width: '150px',height: '150px',
+        //   data: {name: this.name, animal: this.animal,'test':'test'}
+        });
+    
+        this.restapi.dialogRefLoading.disableClose = true;
+    
+    
+      }
+    
 
     reset(){
 

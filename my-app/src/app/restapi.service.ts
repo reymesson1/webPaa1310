@@ -9,7 +9,9 @@ import * as moment from 'moment';
 })
 export class RestapiService {
 
+  isLoading : boolean = false;
   filename : String = ""
+  dialogRefLoading
   dialogRefVideo
   dialogRefVideo2
   dialogRefVideo3

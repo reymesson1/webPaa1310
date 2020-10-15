@@ -44,8 +44,11 @@ export class DashboardComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 100];
   isAuthenticated : boolean = false;
+  isLoading : boolean = false;
   
   ngOnInit(): void { 
+
+    // this.openDialogLoading();
 
     this.isAuthenticated = this.restapi.isAuthenticated;
 
@@ -107,7 +110,19 @@ export class DashboardComponent implements OnInit {
     
   }
   
-  ngAfterViewChecked(){
+  ngAfterViewInit(){
+
+    // if(this.restapi.isLoading){
+
+      // this.openDialogLoading();
+    // }
+    // }else{
+      
+    //   this.dialogRefLoading;
+    // }
+    
+    this.cdr.detectChanges();
+
 
     // console.log(this.paginator)
 
