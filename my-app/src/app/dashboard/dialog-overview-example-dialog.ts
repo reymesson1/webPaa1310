@@ -101,9 +101,6 @@ export class DialogOverviewExampleDialog {
 
     createJob(event){
 
-        console.log(event);
-
-        // this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
         this.restapi.setMaster(this.actualId,this.fileName,event);
 
         this.restapi.updateBucket(this.fileToUpload)
