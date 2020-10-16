@@ -84,6 +84,14 @@ exports.getUser = async(req,res)=>{
 
 }
 
+exports.deleteUser = async(req,res)=>{
+    
+    var user = await User.remove({"_id":req.body.id});
+
+    res.send(user);
+
+}
+
 exports.updateRegister = async(req,res)=>{
     
     var userData = req.body;

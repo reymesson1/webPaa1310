@@ -54,6 +54,8 @@ app.post('/column', columnController.setColumn);
 app.post('/register', userController.setRegister);
 
 app.post('/updateregister', userController.updateRegister);
+
+app.post('/deleteuser', userController.deleteUser);
   
 app.post('/login', userController.setLogin);
 

@@ -65,9 +65,27 @@ export class UserListComponent implements OnInit {
     this.openDialog();
   }
 
-  delete(){
+  delete(_id){
 
-    console.log('delete');
+    this.restapi.deleteUser(_id)
+    .subscribe(
+      (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            setTimeout(() => {
+              
+              location.reload();
+            }, 1000);
+
+        },
+        response => {
+          console.log("POST call in error", response.token);
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
   }
 
   getUsers(){

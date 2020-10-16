@@ -566,6 +566,15 @@ export class RestapiService {
 
   }
 
+  deleteUser(_id){
+
+    return this.http.post(this.path+"deleteuser",
+    {
+      "id": _id,
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
 
   
 
