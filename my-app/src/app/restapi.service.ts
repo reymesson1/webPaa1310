@@ -536,6 +536,15 @@ export class RestapiService {
     
   }
 
+  deleteVideo(_id){
+
+    return this.http.post(this.path+"deletevideo",
+    {
+      "id": _id,
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
 
   
 

@@ -55,6 +55,26 @@ export class ProfileComponent implements OnInit {
     this.dialogRef.disableClose = true;
   }
 
+  delete(_id){
+
+    console.log(_id);
+    this.restapi.deleteVideo(_id)
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            location.reload();
+        },
+        response => {
+          console.log("POST call in error", response.token);
+
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
+
+  }
+
 
 
 }

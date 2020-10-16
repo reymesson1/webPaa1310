@@ -65,6 +65,8 @@ app.get('/bucket', awsController.getBucket);
 
 app.post('/creatingjobbucket', awsController.creatingJobBucket);
 
+app.post('/deletevideo', columnController.deleteVideo);
+
 // app.post('/updatebucket', awsController.updateBucket);
 
 const storage = multer.memoryStorage({
