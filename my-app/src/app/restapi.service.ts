@@ -246,15 +246,16 @@ export class RestapiService {
 
   }
 
-  setMaster(columns : Column[],dataId,name){
+  setMaster(dataId,filename,event){
 
     // this.http.post("http://localhost:8082/column",
     this.http.post(this.path+"column",
     {
       "id": dataId,
       "date": moment().format("YYYY-MM-DD hh:mm"),
-      "name": name,
-      "columns": columns,
+      "name": filename,
+      "title": event.value.title,
+      "description": event.value.description,
       "status": this.status,
       "isActive": true,
       "creator": this.token

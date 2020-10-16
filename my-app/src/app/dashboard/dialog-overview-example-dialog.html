@@ -1,63 +1,35 @@
-<div class="row">
-    <h1 mat-dialog-title> &nbsp;&nbsp;&nbsp;   {{'Upload New Video'}}</h1>
-</div>
+<div class="container-fluid" style="overflow:hidden;">
 
-<div class="row">
-        <div class="col-md-4">
+    <div class="row">
+        <h1 mat-dialog-title> &nbsp;&nbsp;&nbsp;   {{'Upload New Video'}}</h1>
+    </div>
+    <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                    <input class="form-control" type="file" placeholder="file" name="file" id="file" ngModel #first="ngModel"            (change)="handleFileInput($event.target.files)"/>
             </div>
-        <div class="col-md-4">
-                <!-- <button mat-button color="primary" (click)="reset()" >Upload video</button> -->
-                <!-- <input type="file"
-                id="file"
-                (change)="handleFileInput($event)"> -->
-                <!-- (change)="handleFileInput($event.target.files)"> -->
-                <input class="form-control" type="file" placeholder="file" name="file" id="file" ngModel #first="ngModel"            (change)="handleFileInput($event.target.files)"/>
-
-        </div>
-        <div class="col-md-4">
-        </div>
-    
-
-</div>
-<div class="row">
-
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
-                <mat-label>Favorite food</mat-label>
-                <input matInput placeholder="Ex. Pizza" value="Sushi">
-            </mat-form-field>
-            
-            <mat-form-field class="example-full-width">
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-            </mat-form-field>
+            <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <form #f="ngForm" (ngSubmit)="createJob(f)" novalidate>
+            <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Title</mat-label>
+                    <input matInput name="title" ngModel #first="ngModel" placeholder="Title" />
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput name="description" ngModel #first="ngModel" placeholder="Ex. It makes me feel youtuber..."></textarea>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                    <div class="col-md-offset-10">
+                        <button type="submit" mat-raised-button>Save</button>
+                    </div>
+            </div>
         </form>
-    
-
-</div>
-<div class="row">
-        <div class="col-md-5">
-            </div>
-        <div class="col-md-5">
-            <button mat-button color="primary" (click)="createJob()" >Save</button>
-        </div>
-        <div class="col-md-2">
-        </div>
-
-</div>
-<!-- <div class="row">
-    <div class="col-md-4">
-            <button mat-button color="default" (click)="viewScore()" >View Score</button>
-        </div>
-    <div class="col-md-4">
-            <button mat-button color="primary" (click)="reset()" >Play again</button>
     </div>
-    <div class="col-md-4">
-            <button  [disabled]="!isStarted" mat-button color="primary" (click)="saveState()" >Save State</button>
-    </div>
+    <br/>
+    <br/>
 </div>
-<div class="row" *ngIf="isScore" >
-
-    <app-view-score></app-view-score>
-
-</div> -->

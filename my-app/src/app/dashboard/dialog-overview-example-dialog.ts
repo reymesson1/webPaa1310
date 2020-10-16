@@ -99,13 +99,12 @@ export class DialogOverviewExampleDialog {
         this.restapi.muestrameTablero = true;
     }
 
-    createJob(){
+    createJob(event){
 
-        // this.restapi.updateBucket(this.fileToUpload);
+        console.log(event);
 
-        this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
-
-        console.log(this.fileToUpload);
+        // this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
+        this.restapi.setMaster(this.actualId,this.fileName,event);
 
         this.restapi.updateBucket(this.fileToUpload)
         .subscribe(
@@ -122,7 +121,6 @@ export class DialogOverviewExampleDialog {
 
             },
             response => {
-              // this.data=response;
               console.log("POST call in error", response);
             },
             () => {
