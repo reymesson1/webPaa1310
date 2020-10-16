@@ -47,18 +47,9 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  openDialog(): void {
-
-    this.dialogRef = this.dialog.open(UserComponent, {
-      width: '800px',
-    });
-
-    this.dialogRef.disableClose = true;
-  }
-
   edit(_id){
 
-    this.dialogRef = this.dialog.open(EditVideoComponent, {
+    this.restapi.dialogRefEditVideo = this.dialog.open(EditVideoComponent, {
       width: '800px',
       data: { _id: _id },
     });

@@ -36,6 +36,10 @@ export class EditVideoComponent implements OnInit {
     .subscribe(
       (val:any) => {
             console.log("POST call successful value returned in body",val);
+            this.restapi.dialogRefEditVideo.close();
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
         },
         response => {
           console.log("POST call in error", response.token);

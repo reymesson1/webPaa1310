@@ -11,6 +11,7 @@ export class RestapiService {
 
   isLoading : boolean = false;
   filename : String = ""
+  dialogRefEditVideo
   dialogRefLoading
   dialogRefVideo
   dialogRefVideo2
