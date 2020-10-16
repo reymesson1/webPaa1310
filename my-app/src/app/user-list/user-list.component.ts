@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { RestapiService} from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements AfterViewInit {
 
   editMode : boolean = false;
   name : string = 'New User';
@@ -18,6 +21,8 @@ export class UserListComponent implements OnInit {
   username
   dialogRef
   permission
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
@@ -26,6 +31,10 @@ export class UserListComponent implements OnInit {
     this.getUsers();
     this.permission = localStorage.getItem('permission')
 
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   openDialog(): void {
@@ -94,7 +103,8 @@ export class UserListComponent implements OnInit {
     .subscribe(
       (val:any) => {
           console.log("POST call successful value returned in body",val);
-          this.dataSource = val
+          this.dataSource = new MatTableDataSource<any>(val)
+          this.dataSource.sort = this.sort
           // this.columns = val[0];
           // this.columnsTwo = val[0].columns
           // return val;

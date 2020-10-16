@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { RestapiService } from '../restapi.service';
 import { UserComponent } from '../user/user.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditVideoComponent } from '../edit-video/edit-video.component';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'date', 'weight', 'symbol'];
   // dataSource = ELEMENT_DATA;
@@ -17,6 +20,8 @@ export class ProfileComponent implements OnInit {
   username
   dialogRef
   permission
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private restapi : RestapiService, public dialog: MatDialog) { }
 
@@ -32,7 +37,10 @@ export class ProfileComponent implements OnInit {
         (val:any) => {
             console.log("POST call successful value returned in body",val);
             // this.columns = val
-            this.dataSource = val
+            // this.dataSource = val
+            this.dataSource = new MatTableDataSource<any>(val)
+            this.dataSource.sort = this.sort
+  
         },
         response => {
           console.log("POST call in error", response.token);
@@ -45,6 +53,10 @@ export class ProfileComponent implements OnInit {
 
 
 
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   openDialog(): void {
