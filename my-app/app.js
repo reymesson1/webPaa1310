@@ -69,6 +69,8 @@ app.post('/deletevideo', columnController.deleteVideo);
 
 app.post('/geteditvideo', columnController.getEditVideo);
 
+app.post('/seteditvideo', columnController.setEditVideo);
+
 // app.post('/updatebucket', awsController.updateBucket);
 
 const storage = multer.memoryStorage({

@@ -32,8 +32,18 @@ export class EditVideoComponent implements OnInit {
 
   edit(id,event){
 
-    console.log(id)
-    console.log(event);
+    this.restapi.setEditVideo(id,event)
+    .subscribe(
+      (val:any) => {
+            console.log("POST call successful value returned in body",val);
+        },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    }); 
+
 
   }
 

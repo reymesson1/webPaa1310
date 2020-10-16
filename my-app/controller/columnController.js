@@ -142,6 +142,20 @@ exports.getEditVideo = async(req,res)=>{
     res.send(column);
 }
 
+exports.setEditVideo = async(req,res)=>{
+
+    var column = await Column.findOne({"_id":req.body.id}, function(err,c){
+        c.title = req.body.title
+        c.description = req.body.description
+        c.save(function(err,c){
+            console.log("Column updated");
+        })        
+
+    })
+
+    res.send(column);
+}
+
 exports.deleteVideo = async(req,res)=>{
     
     var obj = req.body    

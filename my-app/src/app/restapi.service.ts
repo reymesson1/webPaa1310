@@ -559,6 +559,8 @@ export class RestapiService {
     return this.http.post(this.path+"seteditvideo",
     {
       "id": _id,
+      "title": event.value.title,
+      "description": event.value.description
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }
