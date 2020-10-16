@@ -98,11 +98,13 @@ app.post('/updatebucket',upload,(req, res) => {
     promise.then(
         function(data) {
         console.log("Successfully uploaded photo.");
+        res.send({"token":"end"})
         // viewAlbum(albumName);
         },
         function(err) {
         // return alert("There was an error uploading your photo: ", err.message);
         console.log("There was an error uploading your photo: ", err.message);
+        res.send({"error":"end"})
         }
     );
 
