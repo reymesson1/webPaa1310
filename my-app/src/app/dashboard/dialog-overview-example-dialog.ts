@@ -111,9 +111,14 @@ export class DialogOverviewExampleDialog {
         .subscribe(
             (val) => {
                 console.log("POST call successful value returned in body",val);
-                console.log("creating a job");
-                this.restapi.creatingJob(this.fileName);
-                this.restapi.dialogRefLoading.close();
+                setTimeout(() => {
+
+                    console.log("creating a job");
+                    this.restapi.creatingJob(this.fileName);
+                    this.restapi.dialogRefLoading.close();
+    
+                    
+                }, 15000);
 
             },
             response => {
