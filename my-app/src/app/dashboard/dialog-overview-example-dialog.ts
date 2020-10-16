@@ -111,10 +111,15 @@ export class DialogOverviewExampleDialog {
 
                     console.log("creating a job");
                     this.restapi.creatingJob(this.fileName);
-                    this.restapi.dialogRefLoading.close();
     
                     
                 }, 15000);
+                setTimeout(() => {
+
+                    this.restapi.dialogRefLoading.close();
+                    location.reload();
+                    
+                }, 30000);
 
             },
             response => {
