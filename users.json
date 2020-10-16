@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5f7d2c9ebfd97d3be035a0b8"},"username":"reymesson","name":"Rey","lastname":"Messon","permission":"3","password":"$2a$10$qh1qkBWg1oX/8ME8inxL..dst2tREUcAtU4tSvnQlHJ7erg3cEzq6","__v":0}
+{"_id":{"$oid":"5f7d3a3cbfd97d3be035a0bb"},"username":"prueba","name":"PruebaName","lastname":"PruebaLastname","permission":"1","password":"$2a$10$H78n0KJjqJuowEQ5B3k/dO7F8ktBDHmaiHSyiAEAP0mMTD3vlnPB6","__v":0}
+{"_id":{"$oid":"5f81fbfd4d90ea43e8b30e27"},"username":"pucmm","name":"pucmm","lastname":"pucmm","permission":"1","password":"$2a$10$Il.guFjRNiwst7dl/wgbge6aTq6VYnY.4CPTRL/nstrXq6rqY0TjC","__v":0}
