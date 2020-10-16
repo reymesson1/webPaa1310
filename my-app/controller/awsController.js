@@ -55,8 +55,6 @@ exports.updateBucket = async(req,res)=>{
 
     // var files = req.body.files;
 
-    console.log(req.file)
-
     // var file = files[0];
     // var fileName = file.name;
 

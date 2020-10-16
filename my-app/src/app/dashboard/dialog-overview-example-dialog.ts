@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { RestapiService, Task } from '../restapi.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoadingComponent } from '../loading/loading.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
     selector: 'dialog-overview-example-dialog',
@@ -17,18 +18,22 @@ export class DialogOverviewExampleDialog {
     isStarted : boolean = false;
     fileToUpload: File = null;
     fileName : String = "";
+    selectedFile = null;
 
 
-    constructor(private cdr: ChangeDetectorRef, public dialog: MatDialog,private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
+
+    constructor(private http: HttpClient,private cdr: ChangeDetectorRef, public dialog: MatDialog,private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
-    handleFileInput(files: FileList) {
-        this.fileToUpload = files[0];
-        // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
-        // this.restapi.updateBucket(this.fileToUpload);
-        console.log(this.fileToUpload);
-        this.fileName = this.fileToUpload.name;
-        this.restapi.filename = this.fileToUpload.name;
+    handleFileInput(event) {
+        // this.fileToUpload = files[0];
+        // // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
+        // // this.restapi.updateBucket(this.fileToUpload);
+        // console.log(this.fileToUpload);
+        // this.fileName = this.fileToUpload.name;
+        // this.restapi.filename = this.fileToUpload.name;
+        this.selectedFile = <File>event.target.files[0];
+
     }
     
 
@@ -103,22 +108,35 @@ export class DialogOverviewExampleDialog {
 
         // this.restapi.updateBucket(this.fileToUpload);
 
-        this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
+        // this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
 
-        console.log(this.fileToUpload);
+        // console.log(this.fileToUpload);
 
-        this.restapi.updateBucket(this.fileToUpload)
-        .subscribe(
-            (val) => {
-                console.log("POST call successful value returned in body",val);
-            },
-            response => {
-              // this.data=response;
-              console.log("POST call in error", response);
-            },
-            () => {
-              console.log("The POST observable is now completed.");
-        });
+        const fd = new FormData();
+        fd.append('file', this.selectedFile, this.selectedFile.name);
+    
+        this.http.post("http://localhost:8083/updatebucket",fd,
+        {headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+        .subscribe(res=>{
+          console.log(res);
+          this.restapi.dialogRefLoading.close();
+
+
+        })
+    
+
+        // this.restapi.updateBucket(this.fileToUpload)
+        // .subscribe(
+        //     (val) => {
+        //         console.log("POST call successful value returned in body",val);
+        //     },
+        //     response => {
+        //       // this.data=response;
+        //       console.log("POST call in error", response);
+        //     },
+        //     () => {
+        //       console.log("The POST observable is now completed.");
+        // });
   
 
 
@@ -126,15 +144,15 @@ export class DialogOverviewExampleDialog {
 
         console.log("creating a job");
 
-        this.restapi.creatingJob(this.fileName);
+        // this.restapi.creatingJob(this.fileName);
 
 
-        setTimeout(() => {
+        // setTimeout(() => {
 
 
-            this.restapi.dialogRefLoading.close();
+        //     this.restapi.dialogRefLoading.close();
     
-        }, 45000);
+        // }, 45000);
 
 
         this.dialogRef.close();
