@@ -545,6 +545,24 @@ export class RestapiService {
 
   }
 
+  getEditVideo(_id){
+
+    return this.http.post(this.path+"geteditvideo",
+    {
+      "id": _id,
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  setEditVideo(_id,event){
+
+    return this.http.post(this.path+"seteditvideo",
+    {
+      "id": _id,
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
 
   
 

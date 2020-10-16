@@ -14,14 +14,14 @@
                         <div class="row">
                                 <mat-form-field style="width:400px !important" class="example-full-width">
                                         <mat-label>Title</mat-label>
-                                        <input matInput name="title" ngModel #first="ngModel" placeholder="Title" />
+                                        <input matInput name="title" [(value)]="selectedData.title" ngModel #first="ngModel" placeholder="Title" />
                                 </mat-form-field>                        
                         </div>
                         <div class="row">
 
                                 <mat-form-field class="example-full-width">
                                         <mat-label>Description</mat-label>
-                                        <textarea matInput name="description" ngModel #first="ngModel" placeholder="Ex. It makes me feel youtuber..."></textarea>
+                                        <textarea matInput name="description" [(value)]="selectedData.description" ngModel #first="ngModel" placeholder="Ex. It makes me feel youtuber..."></textarea>
                                 </mat-form-field>
                     
 

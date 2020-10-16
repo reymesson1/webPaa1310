@@ -135,6 +135,13 @@ exports.getColumnSortedTop = async(req,res)=>{
     res.send(column);
 }
 
+exports.getEditVideo = async(req,res)=>{
+
+    var column = await Column.find({"_id":req.body.id}).sort({"date":-1})
+    
+    res.send(column);
+}
+
 exports.deleteVideo = async(req,res)=>{
     
     var obj = req.body    
