@@ -9,7 +9,7 @@ import { RestapiService } from '../restapi.service';
 })
 export class EditVideoComponent implements OnInit {
 
-  selectedData = []
+  selectedData : any = []
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private restapi:RestapiService) { }
 
