@@ -36,6 +36,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { FilterPipe } from './filter.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { EditVideoComponent } from './edit-video/edit-video.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { UserListComponent } from './user-list/user-list.component';
     LoadingComponent,
     FilterPipe,
     ProfileComponent,
-    UserListComponent
+    UserListComponent,
+    EditVideoComponent
   ],
   imports: [
     BrowserModule,

@@ -50,7 +50,7 @@
                                             <ng-container matColumnDef="symbol">
                                                 <th colspan="3" mat-header-cell *matHeaderCellDef> &nbsp;&nbsp;Action </th>
                                                         <td colspan="2" mat-cell *matCellDef="let element"> 
-                                                                <button [disabled]="permission !='3'" mat-button mat-raised-button color="primary">Edit</button>&nbsp;
+                                                                <button [disabled]="permission !='3'" (click)="edit(element._id)" mat-button mat-raised-button color="primary">Edit</button>&nbsp;
                                                                 <button [disabled]="permission !='3'" (click)="delete(element._id)"  mat-button mat-raised-button color="warn">Delete</button>
                                                         </td>
                                             </ng-container>

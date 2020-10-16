@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestapiService } from '../restapi.service';
 import { UserComponent } from '../user/user.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EditVideoComponent } from '../edit-video/edit-video.component';
 
 @Component({
   selector: 'app-profile',
@@ -55,9 +56,18 @@ export class ProfileComponent implements OnInit {
     this.dialogRef.disableClose = true;
   }
 
-  delete(_id){
+  edit(_id){
+
+    this.dialogRef = this.dialog.open(EditVideoComponent, {
+      width: '800px',
+      data: { _id: _id },
+    });
 
     console.log(_id);
+  }
+
+  delete(_id){
+
     this.restapi.deleteVideo(_id)
     .subscribe(
         (val:any) => {
