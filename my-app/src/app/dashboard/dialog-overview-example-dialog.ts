@@ -23,9 +23,9 @@ export class DialogOverviewExampleDialog {
     {}
 
     handleFileInput(files: FileList) {
-        this.fileToUpload = files.item(0);
+        this.fileToUpload = files[0];
         // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
-        this.restapi.updateBucket(this.fileToUpload);
+        // this.restapi.updateBucket(this.fileToUpload);
         console.log(this.fileToUpload);
         this.fileName = this.fileToUpload.name;
         this.restapi.filename = this.fileToUpload.name;
@@ -105,6 +105,23 @@ export class DialogOverviewExampleDialog {
 
         this.restapi.setMaster(this.restapi.columns, this.actualId,this.fileName);
 
+        console.log(this.fileToUpload);
+
+        this.restapi.updateBucket(this.fileToUpload)
+        .subscribe(
+            (val) => {
+                console.log("POST call successful value returned in body",val);
+            },
+            response => {
+              // this.data=response;
+              console.log("POST call in error", response);
+            },
+            () => {
+              console.log("The POST observable is now completed.");
+        });
+  
+
+
         this.openDialogLoading()
 
         console.log("creating a job");
@@ -118,6 +135,9 @@ export class DialogOverviewExampleDialog {
             this.restapi.dialogRefLoading.close();
     
         }, 45000);
+
+
+        this.dialogRef.close();
 
         this.reset();
 
@@ -166,11 +186,6 @@ export class DialogOverviewExampleDialog {
 
         
         this.dialogRef.close();
-
-        setTimeout(() => {
-            
-            window.location.reload();
-        }, 2000);
 
     }
 

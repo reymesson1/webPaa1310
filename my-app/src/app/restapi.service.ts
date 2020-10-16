@@ -32,8 +32,8 @@ export class RestapiService {
   message = "Welcome to Connect 4 Game";
   users = [];
   TOKEN_KEY = 'token'
-  // path = "http://localhost:8083/";
-  path = "http://167.172.143.106:8083/";
+  path = "http://localhost:8083/";
+  // path = "http://167.172.143.106:8083/";
   
   authPath = this.path + '/login';
 
@@ -468,19 +468,8 @@ export class RestapiService {
     // formData.append('file', event, event.name);
 
     // this.http.post("http://localhost:8080/uploadexcel",
-    this.http.post(this.path+"updatebucket",
+    return this.http.post(this.path+"updatebucket",
     formData,{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
-    .subscribe(
-          (val) => {
-              console.log("POST call successful value returned in body",val);
-          },
-          response => {
-            // this.data=response;
-            console.log("POST call in error", response);
-          },
-          () => {
-            console.log("The POST observable is now completed.");
-    });
 
 
     // console.log(file)
