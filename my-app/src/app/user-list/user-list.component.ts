@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { RegisterComponent } from '../register/register.component';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -33,45 +33,27 @@ export class UserListComponent implements AfterViewInit {
 
   }
 
+  
+
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
   openDialog(): void {
+  
+      const dialogRef = this.dialog.open(RegisterComponent, {
+        width: '450px',
+        data: {name: this.name}
+      })
+  }
+  
+  edit(_id){
 
-    const dialogRef = this.dialog.open(RegisterComponent, {
-      width: '450px',
-      data: {name: this.name}
+    this.restapi.dialogRefEditVideo = this.dialog.open(EditUserComponent, {
+      width: '800px',
+      data: { _id: _id },
     });
 
-    // dialogRef.disableClose = true;
-
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
-  
-
-  }
-
-  edit(id){
-
-    console.log('edit')
-    console.log(id)
-
-    for(var x=0;x<this.dataSource.length;x++){
-
-      if(this.dataSource[x]._id==id){
-        console.log(this.dataSource[x]);
-        this.restapi.userEditArr = this.dataSource[x];
-      }
-
-    }
-
-    this.restapi.userEditMode = true;
-
-    this.openDialog();
   }
 
   delete(_id){

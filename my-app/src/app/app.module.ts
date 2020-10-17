@@ -38,6 +38,7 @@ import { FilterPipe } from './filter.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { EditVideoComponent } from './edit-video/edit-video.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { EditVideoComponent } from './edit-video/edit-video.component';
     FilterPipe,
     ProfileComponent,
     UserListComponent,
-    EditVideoComponent
+    EditVideoComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

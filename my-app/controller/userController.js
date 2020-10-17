@@ -109,3 +109,25 @@ exports.updateRegister = async(req,res)=>{
     res.send(user)
 }
 
+exports.getEditUser = async(req,res)=>{
+    
+    var user = await User.find({"_id":req.body.id})
+
+    res.send(user);
+
+}
+
+exports.setEditUser = async(req,res)=>{
+
+    var user = await User.findOne({"_id":req.body.id}, function(err,c){
+        c.name = req.body.firstname
+        c.lastname = req.body.lastname
+        c.save(function(err,c){
+            console.log("User updated");
+        })        
+
+    })
+
+    res.send(user);
+}
+

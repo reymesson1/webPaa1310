@@ -575,6 +575,29 @@ export class RestapiService {
 
   }
 
+  getEditUser(_id){
+
+    return this.http.post(this.path+"getedituser",
+    {
+      "id": _id,
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  setEditUser(_id,event){
+
+    console.log(event);
+
+    return this.http.post(this.path+"setedituser",
+    {
+      "id": _id,
+      "firstname": event.value.firstname,
+      "lastname": event.value.lastname
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+
 
   
 

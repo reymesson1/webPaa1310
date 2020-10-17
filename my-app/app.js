@@ -56,6 +56,10 @@ app.post('/register', userController.setRegister);
 app.post('/updateregister', userController.updateRegister);
 
 app.post('/deleteuser', userController.deleteUser);
+
+app.post('/getedituser', userController.getEditUser);
+
+app.post('/setedituser', userController.setEditUser);
   
 app.post('/login', userController.setLogin);
 

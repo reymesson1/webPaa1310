@@ -1,0 +1,41 @@
+<div class="container-fluid" style="overflow:hidden;">
+    
+        <div class="row">
+    
+            <h1>Edit User</h1>
+    
+        </div>
+    
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+    
+                <div class="row">
+                        <form #f="ngForm" (ngSubmit)="edit(data._id,f)" novalidate>
+                            <div class="row">
+                                    <mat-form-field style="width:400px !important" class="example-full-width">
+                                            <mat-label>First Name</mat-label>
+                                            <input matInput name="firstname" [(value)]="selectedData.name" ngModel #first="ngModel" />
+                                    </mat-form-field>                        
+                            </div>
+                            <div class="row">
+    
+                                    <mat-form-field class="example-full-width">
+                                            <mat-label>Last Name</mat-label>
+                                            <textarea matInput name="lastname" [(value)]="selectedData.lastname" ngModel #first="ngModel" ></textarea>
+                                    </mat-form-field>
+                        
+    
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <button type="submit" mat-raised-button>Save</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </form>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-4"></div>
+    <br/>
+    <br/>
