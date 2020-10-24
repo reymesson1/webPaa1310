@@ -259,6 +259,7 @@ export class RestapiService {
       "description": event.value.description,
       "status": this.status,
       "isActive": true,
+      "isLike": false,
       "creator": this.token
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
     .subscribe(
@@ -593,6 +594,16 @@ export class RestapiService {
       "id": _id,
       "firstname": event.value.firstname,
       "lastname": event.value.lastname
+    },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
+
+  }
+
+  setIsLike(_id,event){
+
+    return this.http.post(this.path+"setislike",
+    {
+      "id": _id,
+      "islike": event,
     },{headers: new HttpHeaders({"Authorization":"Bearer " + localStorage.getItem("token") })})
 
   }

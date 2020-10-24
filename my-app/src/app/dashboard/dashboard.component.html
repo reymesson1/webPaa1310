@@ -51,7 +51,8 @@
                                                 <mat-card-subtitle>Dog Breed</mat-card-subtitle>
                                 </mat-card-header>        
                                 <mat-card-actions>
-                                        <button mat-button>LIKE</button>
+                                        <button (click)="isLike(user.id)" *ngIf="!user.isLike" mat-button>LIKE</button>
+                                        <button (click)="isUnLike(user.id)" *ngIf="user.isLike"  mat-button>UNLIKE</button>
                                         <button mat-button>SHARE</button>
                                 </mat-card-actions>
                         </mat-card>

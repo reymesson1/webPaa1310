@@ -156,6 +156,19 @@ exports.setEditVideo = async(req,res)=>{
     res.send(column);
 }
 
+exports.setIsLike = async(req,res)=>{
+
+    var column = await Column.findOne({"id":req.body.id}, function(err,c){
+        c.isLike = req.body.islike
+        c.save(function(err,c){
+            console.log("Column Liked");
+        })        
+
+    })
+
+    res.send(column);
+}
+
 exports.deleteVideo = async(req,res)=>{
     
     var obj = req.body    

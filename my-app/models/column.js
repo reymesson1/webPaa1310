@@ -5,6 +5,7 @@ var columnSchema = new mongoose.Schema({
     date: String,
     name: String,
     title: String,
+    isLike: Boolean,
     description: String,
     columns: Array,
     status: String,

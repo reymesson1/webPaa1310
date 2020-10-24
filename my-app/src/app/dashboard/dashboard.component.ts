@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
   pageSizeOptions = [5, 10, 25, 100];
   isAuthenticated : boolean = false;
   isLoading : boolean = false;
+  isLike_btn : boolean = false;
   
   ngOnInit(): void { 
 
@@ -85,6 +86,47 @@ export class DashboardComponent implements OnInit {
     }    
 
     
+  }
+
+  isLike(id){
+    this.restapi.setIsLike(id,true)
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            this.columns = val
+            // this.columns = val[0];
+            // this.columnsTwo = val[0].columns
+            // return val;
+                window.location.reload();
+
+        },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+  }
+
+  isUnLike(id){
+    this.restapi.setIsLike(id,false)
+    .subscribe(
+        (val:any) => {
+            console.log("POST call successful value returned in body",val);
+            this.columns = val
+            // this.columns = val[0];
+            // this.columnsTwo = val[0].columns
+            // return val;
+            window.location.reload();
+
+        },
+        response => {
+          console.log("POST call in error", response.token);
+        },
+        () => {
+          console.log("The POST observable is now completed.");
+    });
+    // window.location.reload();
   }
 
   PageEvents(event) {

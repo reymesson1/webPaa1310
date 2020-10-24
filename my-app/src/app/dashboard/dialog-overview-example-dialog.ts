@@ -17,12 +17,14 @@ export class DialogOverviewExampleDialog {
     isStarted : boolean = false;
     fileToUpload: File = null;
     fileName : String = "";
+    permission_btn : boolean = true;
 
 
     constructor(private cdr: ChangeDetectorRef, public dialog: MatDialog,private restapi : RestapiService,public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: DialogData) 
     {}
 
     handleFileInput(files: FileList) {
+        this.permission_btn = false;
         this.fileToUpload = files[0];
         // this.restapiservice.uploadFileExcelExams(this.fileToUpload);
         // this.restapi.updateBucket(this.fileToUpload);
